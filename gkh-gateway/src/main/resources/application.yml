@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: gkh-gateway
+
+  cloud:
+    nacos:
+      serverAddr: 106.54.215.151:8848
+  config:
+    import:
+      - nacos:nacos-config-example.properties?refreshEnabled=true
+server:
+  port: 17000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
