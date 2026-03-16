@@ -1,18 +1,26 @@
 spring:
   application:
     name: gkh-gateway
-
+  # 服务注册与发现
   cloud:
     nacos:
-      serverAddr: 106.54.215.151:8848
+      server-addr: 106.54.215.151:8848
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: user-service
+              uri: lb://gkh-user
+              predicates:
+                - Path=/user/**
+              filters:
+                - StripPrefix=2
+  # 配置文件
   config:
     import:
       - nacos:nacos-config-example.properties?refreshEnabled=true
+
 server:
   port: 17000
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+  servlet:
+    context-path: /api

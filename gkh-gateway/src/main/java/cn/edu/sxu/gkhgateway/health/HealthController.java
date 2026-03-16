@@ -13,7 +13,7 @@ public class HealthController {
 
     @GetMapping
     public BaseResponse<String> health(){
-        return ResultUtils.success("health");
+        return ResultUtils.success("gkh-gateway health");
     }
 
 }
