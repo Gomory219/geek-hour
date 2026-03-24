@@ -1,6 +1,23 @@
 spring:
   application:
     name: gkh-user
+  cloud:
+    nacos:
+      server-addr: 106.54.215.151:8848
+      config:
+        namespace: gkh
+
+  config:
+    import:
+      - nacos:data-resource-config.yaml?refreshEnabled=true
+
+
+##spring:
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    username: postgres
+#    password: ${POSTGRES_PASSWORD}
+#    url: jdbc:postgresql://106.54.215.151:5433/gkh-all
 
 server:
   port: 17001
