@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>反作弊 - GeekHour 管理后台</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="./index.html" class="admin-logo">
+                    <span class="admin-logo-icon">&lt;/&gt;</span>
+                    <span>GeekHour Admin</span>
+                </a>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-group">
+                    <div class="admin-nav-group-title">系统设置</div>
+                    <a href="./permissions.html" class="admin-nav-item">权限管理</a>
+                    <a href="./logs.html" class="admin-nav-item">操作日志</a>
+                    <a href="./settings.html" class="admin-nav-item">系统配置</a>
+                    <a href="./anti-spam.html" class="admin-nav-item active">反作弊</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <div class="admin-breadcrumb">
+                        <a href="./index.html">首页</a>
+                        <span class="separator">/</span>
+                        <span class="current">反作弊</span>
+                    </div>
+                </div>
+                <div class="admin-header-right">
+                    <button class="btn btn-primary btn-sm">保存配置</button>
+                    <div class="admin-user"><div class="avatar avatar-sm">A</div></div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <div class="page-header">
+                    <h1 class="page-title">反作弊设置</h1>
+                    <p class="page-description">配置防刷策略和IP限制</p>
+                </div>
+
+                <div class="admin-tabs">
+                    <button class="admin-tab active">基础策略</button>
+                    <button class="admin-tab">IP限制</button>
+                    <button class="admin-tab">验证码</button>
+                    <button class="admin-tab">黑名单</button>
+                </div>
+
+                <!-- Basic Settings -->
+                <div class="form-card">
+                    <h3 class="form-section-title">行为检测</h3>
+                    <div class="flex flex-col gap-md">
+                        <div class="flex items-center justify-between p-md" style="background: var(--bg-hover); border-radius: var(--radius-md);">
+                            <div class="flex-1">
+                                <div class="font-medium">注册频率限制</div>
+                                <div class="text-sm text-secondary">限制同一IP的注册请求频率</div>
+                            </div>
+                            <div class="flex items-center gap-sm">
+                                <input type="number" class="input input-sm" value="5" style="width: 80px;">
+                                <span class="text-secondary">次/小时</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-md" style="background: var(--bg-hover); border-radius: var(--radius-md);">
+                            <div class="flex-1">
+                                <div class="font-medium">登录尝试限制</div>
+                                <div class="text-sm text-secondary">连续登录失败后锁定账号</div>
+                            </div>
+                            <div class="flex items-center gap-sm">
+                                <input type="number" class="input input-sm" value="5" style="width: 80px;">
+                                <span class="text-secondary">次后锁定</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-md" style="background: var(--bg-hover); border-radius: var(--radius-md);">
+                            <div class="flex-1">
+                                <div class="font-medium">发帖频率限制</div>
+                                <div class="text-sm text-secondary">限制用户的发帖频率</div>
+                            </div>
+                            <div class="flex items-center gap-sm">
+                                <input type="number" class="input input-sm" value="3" style="width: 80px;">
+                                <span class="text-secondary">篇/10分钟</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-md" style="background: var(--bg-hover); border-radius: var(--radius-md);">
+                            <div class="flex-1">
+                                <div class="font-medium">评论频率限制</div>
+                                <div class="text-sm text-secondary">限制用户的评论频率</div>
+                            </div>
+                            <div class="flex items-center gap-sm">
+                                <input type="number" class="input input-sm" value="10" style="width: 80px;">
+                                <span class="text-secondary">条/分钟</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IP Restrictions -->
+                <div class="form-card">
+                    <h3 class="form-section-title">IP限制规则</h3>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>规则名称</th>
+                                <th>IP段</th>
+                                <th>限制类型</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>恶意IP段1</td>
+                                <td><code>192.168.1.0/24</code></td>
+                                <td><span class="status-badge banned">全站封禁</span></td>
+                                <td><span class="status-badge active">启用</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">编辑</a>
+                                        <a href="#" class="action-link danger">删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>海外限制</td>
+                                <td><code>0.0.0.0/0</code></td>
+                                <td><span class="status-badge warning">仅查看</span></td>
+                                <td><span class="status-badge inactive">禁用</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">编辑</a>
+                                        <a href="#" class="action-link danger">删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="form-actions" style="margin-top: var(--spacing-md);">
+                        <button class="btn btn-outline">添加IP规则</button>
+                    </div>
+                </div>
+
+                <!-- CAPTCHA Settings -->
+                <div class="form-card">
+                    <h3 class="form-section-title">验证码设置</h3>
+                    <div class="flex flex-col gap-md">
+                        <div class="flex items-center justify-between p-md" style="background: var(--bg-hover); border-radius: var(--radius-md);">
+                            <div class="flex-1">
+                                <div class="font-medium">登录验证码</div>
+                                <div class="text-sm text-secondary">登录时需要输入验证码</div>
+                            </div>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>启用</span>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between p-md" style="background: var(--bg-hover); border-radius: var(--radius-md);">
+                            <div class="flex-1">
+                                <div class="font-medium">注册验证码</div>
+                                <div class="text-sm text-secondary">注册时需要输入验证码</div>
+                            </div>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>启用</span>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between p-md" style="background: var(--bg-hover); border-radius: var(--radius-md);">
+                            <div class="flex-1">
+                                <div class="font-medium">发帖验证码</div>
+                                <div class="text-sm text-secondary">发帖时需要输入验证码</div>
+                            </div>
+                            <label class="checkbox-label">
+                                <input type="checkbox">
+                                <span>启用</span>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between p-md" style="background: var(--bg-hover); border-radius: var(--radius-md);">
+                            <div class="flex-1">
+                                <div class="font-medium">图形验证强度</div>
+                                <div class="text-sm text-secondary">选择图形验证码的复杂度</div>
+                            </div>
+                            <select class="admin-select" style="width: auto;">
+                                <option>简单</option>
+                                <option selected>普通</option>
+                                <option>复杂</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">今日拦截</div>
+                            <div class="stat-card-value">1,234</div>
+                        </div>
+                        <div class="stat-card-icon danger">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">封禁IP数</div>
+                            <div class="stat-card-value">567</div>
+                        </div>
+                        <div class="stat-card-icon warning">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="15" y1="9" x2="9" y2="15"></line>
+                                <line x1="9" y1="9" x2="15" y2="15"></line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">黑名单用户</div>
+                            <div class="stat-card-value">128</div>
+                        </div>
+                        <div class="stat-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">拦截率</div>
+                            <div class="stat-card-value">98.5%</div>
+                        </div>
+                        <div class="stat-card-icon success">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

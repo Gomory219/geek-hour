@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>讲师管理 - GeekHour 管理后台</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="./index.html" class="admin-logo">
+                    <span class="admin-logo-icon">&lt;/&gt;</span>
+                    <span>GeekHour Admin</span>
+                </a>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-group">
+                    <div class="admin-nav-group-title">课程管理</div>
+                    <a href="./courses.html" class="admin-nav-item">课程列表</a>
+                    <a href="./recommendations.html" class="admin-nav-item">推荐管理</a>
+                    <a href="./reviews.html" class="admin-nav-item">评价管理</a>
+                    <a href="./instructors.html" class="admin-nav-item active">讲师管理</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <div class="admin-breadcrumb">
+                        <a href="./index.html">首页</a>
+                        <span class="separator">/</span>
+                        <span class="current">讲师管理</span>
+                    </div>
+                </div>
+                <div class="admin-header-right">
+                    <button class="btn btn-primary btn-sm">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        邀请讲师
+                    </button>
+                    <div class="admin-user"><div class="avatar avatar-sm">A</div></div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <div class="page-header">
+                    <h1 class="page-title">讲师管理</h1>
+                    <p class="page-description">管理平台讲师入驻和信息维护</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">讲师总数</div>
+                            <div class="stat-card-value">86</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">活跃讲师</div>
+                            <div class="stat-card-value">56</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">待审核</div>
+                            <div class="stat-card-value" style="color: var(--warning-color);">12</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">本月结算</div>
+                            <div class="stat-card-value">¥234,567</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">讲师列表</h3>
+                        <div class="table-actions">
+                            <input type="text" class="input input-sm" placeholder="搜索讲师..." style="width: 200px;">
+                        </div>
+                    </div>
+                    <div class="table-filters">
+                        <select class="admin-select input-sm">
+                            <option>全部状态</option>
+                            <option selected>已入驻</option>
+                            <option>待审核</option>
+                            <option>已停用</option>
+                        </select>
+                        <select class="admin-select input-sm">
+                            <option>全部分类</option>
+                            <option>前端</option>
+                            <option>后端</option>
+                            <option>移动端</option>
+                            <option>AI/ML</option>
+                        </select>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>讲师信息</th>
+                                <th>擅长领域</th>
+                                <th>课程数</th>
+                                <th>学员数</th>
+                                <th>累计收入</th>
+                                <th>入驻时间</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="table-user-avatar" style="width: 40px; height: 40px;">D</div>
+                                        <div class="table-user-info">
+                                            <span class="table-user-name">david_pro</span>
+                                            <span class="text-xs text-secondary">前端架构师 · 10年经验</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="admin-tag admin-tag-primary">前端</span>
+                                    <span class="admin-tag admin-tag-secondary">架构</span>
+                                </td>
+                                <td>12</td>
+                                <td>23,456</td>
+                                <td>¥156,780</td>
+                                <td>2023-06-15</td>
+                                <td><span class="status-badge active">已入驻</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">详情</a>
+                                        <a href="#" class="action-link">结算</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="table-user-avatar" style="width: 40px; height: 40px;">A</div>
+                                        <div class="table-user-info">
+                                            <span class="table-user-name">alex_dev</span>
+                                            <span class="text-xs text-secondary">全栈工程师 · 8年经验</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="admin-tag admin-tag-primary">前端</span>
+                                    <span class="admin-tag admin-tag-warning">后端</span>
+                                </td>
+                                <td>8</td>
+                                <td>15,678</td>
+                                <td>¥98,450</td>
+                                <td>2023-08-20</td>
+                                <td><span class="status-badge active">已入驻</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">详情</a>
+                                        <a href="#" class="action-link">结算</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="table-user-avatar" style="width: 40px; height: 40px;">G</div>
+                                        <div class="table-user-info">
+                                            <span class="table-user-name">grace_ai</span>
+                                            <span class="text-xs text-secondary">AI算法专家 · 12年经验</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="admin-tag admin-tag-success">AI/ML</span>
+                                    <span class="admin-tag admin-tag-secondary">Python</span>
+                                </td>
+                                <td>6</td>
+                                <td>8,234</td>
+                                <td>¥87,230</td>
+                                <td>2023-10-01</td>
+                                <td><span class="status-badge active">已入驻</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">详情</a>
+                                        <a href="#" class="action-link">结算</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="table-user-avatar" style="width: 40px; height: 40px;">N</div>
+                                        <div class="table-user-info">
+                                            <span class="table-user-name">new_instructor</span>
+                                            <span class="text-xs text-secondary">Java开发 · 5年经验</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="admin-tag admin-tag-secondary">后端</span>
+                                    <span class="admin-tag">Java</span>
+                                </td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>¥0</td>
+                                <td>2024-03-20</td>
+                                <td><span class="status-badge pending">待审核</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">审核</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="table-user-avatar" style="width: 40px; height: 40px;">F</div>
+                                        <div class="table-user-info">
+                                            <span class="table-user-name">frank_fullstack</span>
+                                            <span class="text-xs text-secondary">全栈架构师 · 15年经验</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="admin-tag admin-tag-primary">前端</span>
+                                    <span class="admin-tag admin-tag-warning">后端</span>
+                                    <span class="admin-tag admin-tag-secondary">架构</span>
+                                </td>
+                                <td>18</td>
+                                <td>34,567</td>
+                                <td>¥234,560</td>
+                                <td>2023-01-10</td>
+                                <td><span class="status-badge inactive">已停用</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">详情</a>
+                                        <a href="#" class="action-link" style="color: var(--success-color);">启用</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination-bar">
+                        <span class="pagination-info">显示 1-5 条，共 86 条</span>
+                        <div class="admin-pagination">
+                            <button class="pagination-btn" disabled>&laquo;</button>
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">2</button>
+                            <button class="pagination-btn">3</button>
+                            <span class="pagination-ellipsis">...</span>
+                            <button class="pagination-btn">18</button>
+                            <button class="pagination-btn">&raquo;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

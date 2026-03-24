@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>权限管理 - GeekHour 管理后台</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="./index.html" class="admin-logo">
+                    <span class="admin-logo-icon">&lt;/&gt;</span>
+                    <span>GeekHour Admin</span>
+                </a>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-group">
+                    <div class="admin-nav-group-title">系统设置</div>
+                    <a href="./permissions.html" class="admin-nav-item active">权限管理</a>
+                    <a href="./logs.html" class="admin-nav-item">操作日志</a>
+                    <a href="./settings.html" class="admin-nav-item">系统配置</a>
+                    <a href="./anti-spam.html" class="admin-nav-item">反作弊</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <div class="admin-breadcrumb">
+                        <a href="./index.html">首页</a>
+                        <span class="separator">/</span>
+                        <span class="current">权限管理</span>
+                    </div>
+                </div>
+                <div class="admin-header-right">
+                    <button class="btn btn-primary btn-sm">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        添加角色
+                    </button>
+                    <div class="admin-user"><div class="avatar avatar-sm">A</div></div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <div class="page-header">
+                    <h1 class="page-title">权限管理</h1>
+                    <p class="page-description">管理后台角色和权限配置</p>
+                </div>
+
+                <div class="grid-2">
+                    <!-- Roles -->
+                    <div class="table-container">
+                        <div class="table-header">
+                            <h3 class="table-title">角色列表</h3>
+                        </div>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>角色名称</th>
+                                    <th>成员数</th>
+                                    <th>描述</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-sm">
+                                            <div class="badge badge-primary">超管</div>
+                                            <span class="font-medium">超级管理员</span>
+                                        </div>
+                                    </td>
+                                    <td>2</td>
+                                    <td>拥有所有权限</td>
+                                    <td><span class="status-badge active">启用</span></td>
+                                    <td>
+                                        <div class="table-actions-cell">
+                                            <a href="#" class="action-link">查看</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-sm">
+                                            <div class="badge badge-secondary">运营</div>
+                                            <span class="font-medium">运营人员</span>
+                                        </div>
+                                    </td>
+                                    <td>12</td>
+                                    <td>负责内容审核、数据查看</td>
+                                    <td><span class="status-badge active">启用</span></td>
+                                    <td>
+                                        <div class="table-actions-cell">
+                                            <a href="#" class="action-link">编辑</a>
+                                            <a href="#" class="action-link">权限</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-sm">
+                                            <div class="badge badge-success">客服</div>
+                                            <span class="font-medium">客服人员</span>
+                                        </div>
+                                    </td>
+                                    <td>8</td>
+                                    <td>负责用户问题处理</td>
+                                    <td><span class="status-badge active">启用</span></td>
+                                    <td>
+                                        <div class="table-actions-cell">
+                                            <a href="#" class="action-link">编辑</a>
+                                            <a href="#" class="action-link">权限</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="flex items-center gap-sm">
+                                            <div class="badge badge-warning">财务</div>
+                                            <span class="font-medium">财务人员</span>
+                                        </div>
+                                    </td>
+                                    <td>3</td>
+                                    <td>负责财务数据和结算</td>
+                                    <td><span class="status-badge active">启用</span></td>
+                                    <td>
+                                        <div class="table-actions-cell">
+                                            <a href="#" class="action-link">编辑</a>
+                                            <a href="#" class="action-link">权限</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Admin Users -->
+                    <div class="table-container">
+                        <div class="table-header">
+                            <h3 class="table-title">管理员列表</h3>
+                            <div class="table-actions">
+                                <button class="btn btn-outline btn-sm">添加管理员</button>
+                            </div>
+                        </div>
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>用户</th>
+                                    <th>角色</th>
+                                    <th>最后登录</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="table-user">
+                                            <div class="table-user-avatar">A</div>
+                                            <div class="table-user-info">
+                                                <span class="table-user-name">admin</span>
+                                                <span class="table-user-email">admin@geekhour.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-primary">超管</span></td>
+                                    <td>刚刚</td>
+                                    <td><span class="status-badge active">正常</span></td>
+                                    <td>
+                                        <div class="table-actions-cell">
+                                            <a href="#" class="action-link">编辑</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="table-user">
+                                            <div class="table-user-avatar">O</div>
+                                            <div class="table-user-info">
+                                                <span class="table-user-name">operator1</span>
+                                                <span class="table-user-email">op1@geekhour.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-secondary">运营</span></td>
+                                    <td>10分钟前</td>
+                                    <td><span class="status-badge active">正常</span></td>
+                                    <td>
+                                        <div class="table-actions-cell">
+                                            <a href="#" class="action-link">编辑</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="table-user">
+                                            <div class="table-user-avatar">C</div>
+                                            <div class="table-user-info">
+                                                <span class="table-user-name">cs_agent</span>
+                                                <span class="table-user-email">cs@geekhour.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-success">客服</span></td>
+                                    <td>1小时前</td>
+                                    <td><span class="status-badge active">正常</span></td>
+                                    <td>
+                                        <div class="table-actions-cell">
+                                            <a href="#" class="action-link">编辑</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="table-user">
+                                            <div class="table-user-avatar">F</div>
+                                            <div class="table-user-info">
+                                                <span class="table-user-name">finance1</span>
+                                                <span class="table-user-email">finance@geekhour.com</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge badge-warning">财务</span></td>
+                                    <td>2天前</td>
+                                    <td><span class="status-badge inactive">禁用</span></td>
+                                    <td>
+                                        <div class="table-actions-cell">
+                                            <a href="#" class="action-link">编辑</a>
+                                            <a href="#" class="action-link" style="color: var(--success-color);">启用</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Permission Matrix -->
+                <div class="form-card">
+                    <h3 class="form-section-title">权限矩阵 - 运营人员</h3>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>功能模块</th>
+                                <th>查看</th>
+                                <th>新增</th>
+                                <th>编辑</th>
+                                <th>删除</th>
+                                <th>审核</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>数据看板</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>用户管理</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>内容审核</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                            </tr>
+                            <tr>
+                                <td>课程管理</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>营销工具</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                            <tr>
+                                <td>系统设置</td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="form-actions">
+                        <button class="btn btn-primary">保存权限配置</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

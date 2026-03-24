@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员管理 - GeekHour 管理后台</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="./index.html" class="admin-logo">
+                    <span class="admin-logo-icon">&lt;/&gt;</span>
+                    <span>GeekHour Admin</span>
+                </a>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-group">
+                    <div class="admin-nav-group-title">营销工具</div>
+                    <a href="./coupons.html" class="admin-nav-item">优惠券</a>
+                    <a href="./activities.html" class="admin-nav-item">限时活动</a>
+                    <a href="./memberships.html" class="admin-nav-item active">会员管理</a>
+                    <a href="./promotions.html" class="admin-nav-item">推广管理</a>
+                    <a href="./notifications.html" class="admin-nav-item">消息推送</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <div class="admin-breadcrumb">
+                        <a href="./index.html">首页</a>
+                        <span class="separator">/</span>
+                        <span class="current">会员管理</span>
+                    </div>
+                </div>
+                <div class="admin-header-right">
+                    <button class="btn btn-primary btn-sm">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        添加套餐
+                    </button>
+                    <div class="admin-user"><div class="avatar avatar-sm">A</div></div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <div class="page-header">
+                    <h1 class="page-title">会员管理</h1>
+                    <p class="page-description">配置会员套餐和权益管理</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">会员总数</div>
+                            <div class="stat-card-value">12,345</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">月度会员</div>
+                            <div class="stat-card-value">8,234</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">年度会员</div>
+                            <div class="stat-card-value">4,111</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">本月收入</div>
+                            <div class="stat-card-value">¥345,678</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-tabs">
+                    <button class="admin-tab active">会员套餐</button>
+                    <button class="admin-tab">会员权益</button>
+                    <button class="admin-tab">会员列表</button>
+                </div>
+
+                <!-- Membership Packages -->
+                <div class="grid-3">
+                    <div class="card" style="padding: var(--spacing-lg);">
+                        <div class="flex items-center justify-between mb-md">
+                            <h3 class="font-semibold">月度会员</h3>
+                            <span class="status-badge active">售卖中</span>
+                        </div>
+                        <div class="mb-md">
+                            <span class="text-2xl font-bold text-danger">¥29</span>
+                            <span class="text-secondary">/月</span>
+                        </div>
+                        <div class="flex flex-col gap-sm mb-md">
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>全站300+课程畅学</span>
+                            </div>
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>会员专享折扣</span>
+                            </div>
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>免费下载课程资料</span>
+                            </div>
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>专属客服支持</span>
+                            </div>
+                        </div>
+                        <div class="text-sm text-secondary mb-md">
+                            已售出 <span class="text-primary font-semibold">8,234</span> 份
+                        </div>
+                        <div class="flex gap-sm">
+                            <button class="btn btn-outline btn-sm btn-block">编辑</button>
+                            <button class="btn btn-ghost btn-sm btn-block" style="color: var(--danger-color);">下架</button>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: var(--spacing-lg); border: 2px solid var(--primary-color); position: relative;">
+                        <div class="flex items-center justify-between mb-md">
+                            <h3 class="font-semibold">季度会员</h3>
+                            <span class="status-badge active">售卖中</span>
+                        </div>
+                        <div class="badge badge-primary" style="position: absolute; top: -10px; right: var(--spacing-md);">推荐</div>
+                        <div class="mb-md">
+                            <span class="text-2xl font-bold text-danger">¥68</span>
+                            <span class="text-secondary">/季</span>
+                            <span class="badge badge-warning ml-xs">省¥19</span>
+                        </div>
+                        <div class="flex flex-col gap-sm mb-md">
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>全站300+课程畅学</span>
+                            </div>
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>会员专享折扣</span>
+                            </div>
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>免费下载课程资料</span>
+                            </div>
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>专属客服支持</span>
+                            </div>
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>优先获得新课程</span>
+                            </div>
+                        </div>
+                        <div class="text-sm text-secondary mb-md">
+                            已售出 <span class="text-primary font-semibold">3,456</span> 份
+                        </div>
+                        <div class="flex gap-sm">
+                            <button class="btn btn-outline btn-sm btn-block">编辑</button>
+                            <button class="btn btn-ghost btn-sm btn-block" style="color: var(--danger-color);">下架</button>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: var(--spacing-lg);">
+                        <div class="flex items-center justify-between mb-md">
+                            <h3 class="font-semibold">年度会员</h3>
+                            <span class="status-badge active">售卖中</span>
+                        </div>
+                        <div class="mb-md">
+                            <span class="text-2xl font-bold text-danger">¥199</span>
+                            <span class="text-secondary">/年</span>
+                            <span class="badge badge-warning ml-xs">省¥149</span>
+                        </div>
+                        <div class="flex flex-col gap-sm mb-md">
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>全站300+课程畅学</span>
+                            </div>
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>会员专享折扣</span>
+                            </div>
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>免费下载课程资料</span>
+                            </div>
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>专属客服支持</span>
+                            </div>
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>优先获得新课程</span>
+                            </div>
+                            <div class="flex items-center gap-sm text-sm">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success-color)" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>一对一答疑服务</span>
+                            </div>
+                        </div>
+                        <div class="text-sm text-secondary mb-md">
+                            已售出 <span class="text-primary font-semibold">4,111</span> 份
+                        </div>
+                        <div class="flex gap-sm">
+                            <button class="btn btn-outline btn-sm btn-block">编辑</button>
+                            <button class="btn btn-ghost btn-sm btn-block" style="color: var(--danger-color);">下架</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Revenue Chart -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">会员收入趋势</h3>
+                        <div class="chart-actions">
+                            <select class="admin-select" style="width: auto;">
+                                <option>最近7天</option>
+                                <option selected>最近30天</option>
+                                <option>最近90天</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="chart-placeholder">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                        <span style="margin-left: 8px;">折线图占位</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

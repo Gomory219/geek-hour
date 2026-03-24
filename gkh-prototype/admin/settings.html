@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统配置 - GeekHour 管理后台</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="./index.html" class="admin-logo">
+                    <span class="admin-logo-icon">&lt;/&gt;</span>
+                    <span>GeekHour Admin</span>
+                </a>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-group">
+                    <div class="admin-nav-group-title">系统设置</div>
+                    <a href="./permissions.html" class="admin-nav-item">权限管理</a>
+                    <a href="./logs.html" class="admin-nav-item">操作日志</a>
+                    <a href="./settings.html" class="admin-nav-item active">系统配置</a>
+                    <a href="./anti-spam.html" class="admin-nav-item">反作弊</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <div class="admin-breadcrumb">
+                        <a href="./index.html">首页</a>
+                        <span class="separator">/</span>
+                        <span class="current">系统配置</span>
+                    </div>
+                </div>
+                <div class="admin-header-right">
+                    <button class="btn btn-primary btn-sm">保存配置</button>
+                    <div class="admin-user"><div class="avatar avatar-sm">A</div></div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <div class="page-header">
+                    <h1 class="page-title">系统配置</h1>
+                    <p class="page-description">配置平台基础参数和功能开关</p>
+                </div>
+
+                <div class="admin-tabs">
+                    <button class="admin-tab active">基本设置</button>
+                    <button class="admin-tab">功能开关</button>
+                    <button class="admin-tab">CDN配置</button>
+                    <button class="admin-tab">第三方服务</button>
+                </div>
+
+                <!-- Basic Settings -->
+                <div class="form-card">
+                    <h3 class="form-section-title">站点信息</h3>
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label required">站点名称</label>
+                            <input type="text" class="input" value="GeekHour">
+                            <span class="admin-form-hint">显示在页面标题和导航栏</span>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label required">站点简称</label>
+                            <input type="text" class="input" value="极客工时">
+                            <span class="admin-form-hint">用于邮件和短信等场景</span>
+                        </div>
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label required">站点URL</label>
+                        <input type="url" class="input" value="https://www.geekhour.com">
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">站点描述</label>
+                        <textarea class="admin-textarea" rows="2">面向程序员的技术学习与交流平台</textarea>
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">站点关键词</label>
+                        <input type="text" class="input" value="编程,学习,教程,开发,技术">
+                    </div>
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">联系邮箱</label>
+                            <input type="email" class="input" value="contact@geekhour.com">
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">客服电话</label>
+                            <input type="tel" class="input" value="400-123-4567">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Switches -->
+                <div class="form-card">
+                    <h3 class="form-section-title">功能开关</h3>
+                    <div class="flex flex-col gap-md">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="font-medium">用户注册</div>
+                                <div class="text-sm text-secondary">是否允许新用户注册</div>
+                            </div>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>启用</span>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="font-medium">社区发帖</div>
+                                <div class="text-sm text-secondary">是否允许用户发布社区帖子</div>
+                            </div>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>启用</span>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="font-medium">课程评论</div>
+                                <div class="text-sm text-secondary">是否允许对课程进行评论</div>
+                            </div>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>启用</span>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="font-medium">内容审核</div>
+                                <div class="text-sm text-secondary">启用后发布的内容需要审核</div>
+                            </div>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>启用</span>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <div class="font-medium">维护模式</div>
+                                <div class="text-sm text-secondary">启用后前台将显示维护页面</div>
+                            </div>
+                            <label class="checkbox-label">
+                                <input type="checkbox">
+                                <span>启用</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Settings -->
+                <div class="form-card">
+                    <h3 class="form-section-title">上传设置</h3>
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">最大上传大小</label>
+                            <select class="admin-select">
+                                <option>10MB</option>
+                                <option selected>50MB</option>
+                                <option>100MB</option>
+                                <option>200MB</option>
+                            </select>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">允许的图片格式</label>
+                            <input type="text" class="input" value="jpg,jpeg,png,gif,webp">
+                        </div>
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">允许的视频格式</label>
+                        <input type="text" class="input" value="mp4,webm">
+                    </div>
+                </div>
+
+                <!-- Email Settings -->
+                <div class="form-card">
+                    <h3 class="form-section-title">邮件服务</h3>
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">SMTP服务器</label>
+                            <input type="text" class="input" placeholder="smtp.example.com">
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">SMTP端口</label>
+                            <input type="number" class="input" value="465">
+                        </div>
+                    </div>
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">发件人邮箱</label>
+                            <input type="email" class="input" value="noreply@geekhour.com">
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">发件人名称</label>
+                            <input type="text" class="input" value="GeekHour">
+                        </div>
+                    </div>
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">SMTP用户名</label>
+                            <input type="text" class="input" value="noreply@geekhour.com">
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">SMTP密码</label>
+                            <input type="password" class="input" value="********">
+                        </div>
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" checked>
+                            <span>启用SSL/TLS加密</span>
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-outline">发送测试邮件</button>
+                    </div>
+                </div>
+
+                <!-- Storage Settings -->
+                <div class="form-card">
+                    <h3 class="form-section-title">存储配置</h3>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">存储类型</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="storage" value="local">
+                                <span>本地存储</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="storage" value="oss" checked>
+                                <span>阿里云OSS</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="storage" value="s3">
+                                <span>AWS S3</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="storage" value="qiniu">
+                                <span>七牛云</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Bucket名称</label>
+                            <input type="text" class="input" value="geekhour-bucket">
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">访问域名</label>
+                            <input type="text" class="input" value="https://cdn.geekhour.com">
+                        </div>
+                    </div>
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Access Key ID</label>
+                            <input type="text" class="input" value="LTAI5tXXXXXXXXXX">
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Access Key Secret</label>
+                            <input type="password" class="input" value="********">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

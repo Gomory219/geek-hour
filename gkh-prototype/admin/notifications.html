@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消息推送 - GeekHour 管理后台</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="./index.html" class="admin-logo">
+                    <span class="admin-logo-icon">&lt;/&gt;</span>
+                    <span>GeekHour Admin</span>
+                </a>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-group">
+                    <div class="admin-nav-group-title">营销工具</div>
+                    <a href="./coupons.html" class="admin-nav-item">优惠券</a>
+                    <a href="./activities.html" class="admin-nav-item">限时活动</a>
+                    <a href="./memberships.html" class="admin-nav-item">会员管理</a>
+                    <a href="./promotions.html" class="admin-nav-item">推广管理</a>
+                    <a href="./notifications.html" class="admin-nav-item active">消息推送</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <div class="admin-breadcrumb">
+                        <a href="./index.html">首页</a>
+                        <span class="separator">/</span>
+                        <span class="current">消息推送</span>
+                    </div>
+                </div>
+                <div class="admin-header-right">
+                    <button class="btn btn-primary btn-sm">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        发送消息
+                    </button>
+                    <div class="admin-user"><div class="avatar avatar-sm">A</div></div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <div class="page-header">
+                    <h1 class="page-title">消息推送管理</h1>
+                    <p class="page-description">管理站内信、邮件和短信推送</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">今日推送</div>
+                            <div class="stat-card-value">56</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">送达率</div>
+                            <div class="stat-card-value">98.5%</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">点击率</div>
+                            <div class="stat-card-value">23.4%</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">本月发送</div>
+                            <div class="stat-card-value">1,234,567</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-tabs">
+                    <button class="admin-tab active">发送记录</button>
+                    <button class="admin-tab">消息模板</button>
+                    <button class="admin-tab">推送设置</button>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">推送记录</h3>
+                        <div class="table-actions">
+                            <select class="admin-select input-sm">
+                                <option>全部类型</option>
+                                <option>站内信</option>
+                                <option>邮件</option>
+                                <option>短信</option>
+                            </select>
+                            <select class="admin-select input-sm">
+                                <option>全部状态</option>
+                                <option>成功</option>
+                                <option>失败</option>
+                                <option>发送中</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>消息标题</th>
+                                <th>类型</th>
+                                <th>目标用户</th>
+                                <th>发送时间</th>
+                                <th>送达数/总数</th>
+                                <th>点击数</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="font-medium">新课程上线通知</div>
+                                        <div class="text-xs text-secondary">Vue3 全栈开发实战课程已上线，快来学习吧！</div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-primary">站内信</span></td>
+                                <td>全站用户</td>
+                                <td>2024-03-20 10:00</td>
+                                <td>85,234 / 86,456</td>
+                                <td>12,345</td>
+                                <td><span class="status-badge success">成功</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">详情</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="font-medium">会员续费提醒</div>
+                                        <div class="text-xs text-secondary">您的会员即将到期，续费可享优惠哦！</div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-secondary">邮件</span></td>
+                                <td>会员即将到期用户</td>
+                                <td>2024-03-19 09:00</td>
+                                <td>1,234 / 1,256</td>
+                                <td>234</td>
+                                <td><span class="status-badge success">成功</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">详情</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="font-medium">限时活动通知</div>
+                                        <div class="text-xs text-secondary">秒杀活动即将开始，不要错过！</div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-warning">短信</span></td>
+                                <td>VIP用户</td>
+                                <td>2024-03-18 20:00</td>
+                                <td>3,456 / 3,500</td>
+                                <td>567</td>
+                                <td><span class="status-badge success">成功</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">详情</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="font-medium">学习进度提醒</div>
+                                        <div class="text-xs text-secondary">您已有3天未学习，快来继续学习吧！</div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-primary">站内信</span></td>
+                                <td>学习进度滞后用户</td>
+                                <td>2024-03-17 18:00</td>
+                                <td>12,345 / 12,400</td>
+                                <td>2,345</td>
+                                <td><span class="status-badge success">成功</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">详情</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="font-medium">系统维护通知</div>
+                                        <div class="text-xs text-secondary">系统将于今晚进行维护，预计2小时...</div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-primary">站内信</span></td>
+                                <td>全站用户</td>
+                                <td>2024-03-16 14:00</td>
+                                <td>0 / 90,000</td>
+                                <td>0</td>
+                                <td><span class="status-badge processing">发送中</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">详情</a>
+                                        <a href="#" class="action-link danger">取消</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination-bar">
+                        <span class="pagination-info">显示 1-5 条，共 56 条</span>
+                        <div class="admin-pagination">
+                            <button class="pagination-btn" disabled>&laquo;</button>
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">2</button>
+                            <button class="pagination-btn">3</button>
+                            <button class="pagination-btn">4</button>
+                            <button class="pagination-btn">5</button>
+                            <button class="pagination-btn">6</button>
+                            <button class="pagination-btn">&raquo;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

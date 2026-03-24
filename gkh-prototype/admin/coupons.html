@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优惠券 - GeekHour 管理后台</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="./index.html" class="admin-logo">
+                    <span class="admin-logo-icon">&lt;/&gt;</span>
+                    <span>GeekHour Admin</span>
+                </a>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-group">
+                    <div class="admin-nav-group-title">营销工具</div>
+                    <a href="./coupons.html" class="admin-nav-item active">优惠券</a>
+                    <a href="./activities.html" class="admin-nav-item">限时活动</a>
+                    <a href="./memberships.html" class="admin-nav-item">会员管理</a>
+                    <a href="./promotions.html" class="admin-nav-item">推广管理</a>
+                    <a href="./notifications.html" class="admin-nav-item">消息推送</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <div class="admin-breadcrumb">
+                        <a href="./index.html">首页</a>
+                        <span class="separator">/</span>
+                        <span class="current">优惠券</span>
+                    </div>
+                </div>
+                <div class="admin-header-right">
+                    <button class="btn btn-primary btn-sm">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        创建优惠券
+                    </button>
+                    <div class="admin-user"><div class="avatar avatar-sm">A</div></div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <div class="page-header">
+                    <h1 class="page-title">优惠券管理</h1>
+                    <p class="page-description">创建和管理平台优惠券</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">优惠券总数</div>
+                            <div class="stat-card-value">56</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">进行中</div>
+                            <div class="stat-card-value">12</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">已领取</div>
+                            <div class="stat-card-value">45,678</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">已使用</div>
+                            <div class="stat-card-value">23,456</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">优惠券列表</h3>
+                        <div class="table-actions">
+                            <select class="admin-select input-sm">
+                                <option>全部状态</option>
+                                <option selected>进行中</option>
+                                <option>未开始</option>
+                                <option>已结束</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>优惠券名称</th>
+                                <th>类型</th>
+                                <th>优惠力度</th>
+                                <th>使用条件</th>
+                                <th>已领/总量</th>
+                                <th>已用/已领</th>
+                                <th>有效期</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="font-medium">新人专享券</div>
+                                        <div class="text-xs text-secondary">新用户注册即送</div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-primary">满减券</span></td>
+                                <td><span class="text-danger font-semibold">¥20</span></td>
+                                <td>满 ¥99 可用</td>
+                                <td>12,345 / 50,000</td>
+                                <td>6,234 / 12,345</td>
+                                <td>2024-01-01 ~ 2024-12-31</td>
+                                <td><span class="status-badge active">进行中</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">编辑</a>
+                                        <a href="#" class="action-link">停用</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="font-medium">春节特惠</div>
+                                        <div class="text-xs text-secondary">春节活动专属优惠券</div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-secondary">折扣券</span></td>
+                                <td><span class="text-danger font-semibold">8.5折</span></td>
+                                <td>无门槛</td>
+                                <td>5,678 / 10,000</td>
+                                <td>3,456 / 5,678</td>
+                                <td>2024-02-01 ~ 2024-02-29</td>
+                                <td><span class="status-badge inactive">已结束</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">查看</a>
+                                        <a href="#" class="action-link">复制</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="font-medium">会员专享券</div>
+                                        <div class="text-xs text-secondary">VIP会员专属福利</div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-primary">满减券</span></td>
+                                <td><span class="text-danger font-semibold">¥50</span></td>
+                                <td>满 ¥299 可用</td>
+                                <td>2,345 / 5,000</td>
+                                <td>1,234 / 2,345</td>
+                                <td>2024-03-01 ~ 2024-03-31</td>
+                                <td><span class="status-badge active">进行中</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">编辑</a>
+                                        <a href="#" class="action-link">停用</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="font-medium">兑换码 VIP888</div>
+                                        <div class="text-xs text-secondary">专属兑换码</div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-success">兑换码</span></td>
+                                <td><span class="text-danger font-semibold">¥100</span></td>
+                                <td>满 ¥199 可用</td>
+                                <td>888 / 1,000</td>
+                                <td>456 / 888</td>
+                                <td>2024-01-01 ~ 2024-06-30</td>
+                                <td><span class="status-badge active">进行中</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">编辑</a>
+                                        <a href="#" class="action-link">停用</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div>
+                                        <div class="font-medium">五一劳动节特惠</div>
+                                        <div class="text-xs text-secondary">五一假期限时优惠</div>
+                                    </div>
+                                </td>
+                                <td><span class="badge badge-secondary">折扣券</span></td>
+                                <td><span class="text-danger font-semibold">7折</span></td>
+                                <td>全场可用</td>
+                                <td>0 / 20,000</td>
+                                <td>0 / 0</td>
+                                <td>2024-05-01 ~ 2024-05-07</td>
+                                <td><span class="status-badge processing">未开始</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">编辑</a>
+                                        <a href="#" class="action-link danger">删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination-bar">
+                        <span class="pagination-info">显示 1-5 条，共 56 条</span>
+                        <div class="admin-pagination">
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">2</button>
+                            <button class="pagination-btn">3</button>
+                            <button class="pagination-btn">4</button>
+                            <button class="pagination-btn">5</button>
+                            <button class="pagination-btn">6</button>
+                            <button class="pagination-btn">&raquo;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

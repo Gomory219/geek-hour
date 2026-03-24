@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>评论审核 - GeekHour 管理后台</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="./index.html" class="admin-logo">
+                    <span class="admin-logo-icon">&lt;/&gt;</span>
+                    <span>GeekHour Admin</span>
+                </a>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-group">
+                    <div class="admin-nav-group-title">内容审核</div>
+                    <a href="./posts-review.html" class="admin-nav-item">帖子审核</a>
+                    <a href="./comments-review.html" class="admin-nav-item active">评论审核</a>
+                    <a href="./reports.html" class="admin-nav-item">举报处理</a>
+                    <a href="./violations.html" class="admin-nav-item">违规记录</a>
+                    <a href="./sensitive-words.html" class="admin-nav-item">敏感词库</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <div class="admin-breadcrumb">
+                        <a href="./index.html">首页</a>
+                        <span class="separator">/</span>
+                        <span class="current">评论审核</span>
+                    </div>
+                </div>
+                <div class="admin-header-right">
+                    <div class="admin-user"><div class="avatar avatar-sm">A</div></div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <div class="page-header">
+                    <h1 class="page-title">评论审核</h1>
+                    <p class="page-description">审核用户评论内容，处理恶意评论</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">待审核评论</div>
+                            <div class="stat-card-value">45</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">今日已处理</div>
+                            <div class="stat-card-value">328</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">恶意评论</div>
+                            <div class="stat-card-value">12</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">待审核评论</h3>
+                        <div class="table-actions">
+                            <button class="btn btn-primary btn-sm">批量通过</button>
+                            <button class="btn btn-danger btn-sm">批量删除</button>
+                        </div>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>评论内容</th>
+                                <th>评论者</th>
+                                <th>所属帖子</th>
+                                <th>发布时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="text-sm">很好的文章，学到了很多！</div>
+                                </td>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="table-user-avatar">U</div>
+                                        <span class="table-user-name">user_123</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="#" class="link text-sm" style="max-width: 200px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">关于 React 18 并发模式的深度解析</a>
+                                </td>
+                                <td>5分钟前</td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link" style="color: var(--success-color);">通过</a>
+                                        <a href="#" class="action-link danger">删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="text-sm"><span class="admin-tag admin-tag-danger">广告</span> 加微信xxx获取免费教程</div>
+                                </td>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="table-user-avatar">S</div>
+                                        <span class="table-user-name">spammer_001</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="#" class="link text-sm" style="max-width: 200px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Vue3 项目实战指南</a>
+                                </td>
+                                <td>15分钟前</td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link danger">删除</a>
+                                        <a href="#" class="action-link danger">封禁</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="text-sm">请问这个项目的源码在哪里可以下载？</div>
+                                </td>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="table-user-avatar">D</div>
+                                        <span class="table-user-name">dev_learner</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="#" class="link text-sm" style="max-width: 200px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">TypeScript 高级类型实战</a>
+                                </td>
+                                <td>30分钟前</td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link" style="color: var(--success-color);">通过</a>
+                                        <a href="#" class="action-link danger">删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination-bar">
+                        <span class="pagination-info">显示 1-3 条，共 45 条</span>
+                        <div class="admin-pagination">
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">2</button>
+                            <button class="pagination-btn">3</button>
+                            <button class="pagination-btn">&raquo;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>评价管理 - GeekHour 管理后台</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="./index.html" class="admin-logo">
+                    <span class="admin-logo-icon">&lt;/&gt;</span>
+                    <span>GeekHour Admin</span>
+                </a>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-group">
+                    <div class="admin-nav-group-title">课程管理</div>
+                    <a href="./courses.html" class="admin-nav-item">课程列表</a>
+                    <a href="./recommendations.html" class="admin-nav-item">推荐管理</a>
+                    <a href="./reviews.html" class="admin-nav-item active">评价管理</a>
+                    <a href="./instructors.html" class="admin-nav-item">讲师管理</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <div class="admin-breadcrumb">
+                        <a href="./index.html">首页</a>
+                        <span class="separator">/</span>
+                        <span class="current">评价管理</span>
+                    </div>
+                </div>
+                <div class="admin-header-right">
+                    <div class="admin-user"><div class="avatar avatar-sm">A</div></div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <div class="page-header">
+                    <h1 class="page-title">课程评价管理</h1>
+                    <p class="page-description">审核和管理学员课程评价</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">总评价数</div>
+                            <div class="stat-card-value">12,345</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">待审核</div>
+                            <div class="stat-card-value" style="color: var(--warning-color);">23</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">平均评分</div>
+                            <div class="stat-card-value">4.7</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">好评率</div>
+                            <div class="stat-card-value">96.8%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">评价列表</h3>
+                        <div class="table-actions">
+                            <button class="btn btn-primary btn-sm">批量通过</button>
+                            <button class="btn btn-danger btn-sm">批量删除</button>
+                        </div>
+                    </div>
+                    <div class="table-filters">
+                        <select class="admin-select input-sm">
+                            <option>全部状态</option>
+                            <option selected>待审核</option>
+                            <option>已通过</option>
+                            <option>已隐藏</option>
+                        </select>
+                        <select class="admin-select input-sm">
+                            <option>全部评分</option>
+                            <option>5星</option>
+                            <option>4星</option>
+                            <option>3星及以下</option>
+                        </select>
+                        <input type="text" class="input input-sm" placeholder="搜索课程或用户..." style="flex: 1; min-width: 150px;">
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>课程</th>
+                                <th>用户</th>
+                                <th>评分</th>
+                                <th>评价内容</th>
+                                <th>时间</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <a href="#" class="link text-sm" style="max-width: 150px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Vue3 全栈开发实战</a>
+                                </td>
+                                <td><div class="table-user"><div class="table-user-avatar">A</div><span class="table-user-name">alex</span></div></td>
+                                <td>
+                                    <div class="flex gap-xs">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-sm" style="max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">非常棒的课程，老师讲解清晰，项目实战很给力！强烈推荐！</div>
+                                </td>
+                                <td>2小时前</td>
+                                <td><span class="status-badge pending">待审核</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link" style="color: var(--success-color);">通过</a>
+                                        <a href="#" class="action-link danger">删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <a href="#" class="link text-sm" style="max-width: 150px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">React 18 进阶之路</a>
+                                </td>
+                                <td><div class="table-user"><div class="table-user-avatar">B</div><span class="table-user-name">bob</span></div></td>
+                                <td>
+                                    <div class="flex gap-xs">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#e5e7eb"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-sm" style="max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">内容很深入，但对于初学者来说可能有点难，建议先学基础课程。</div>
+                                </td>
+                                <td>昨天</td>
+                                <td><span class="status-badge approved">已通过</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">隐藏</a>
+                                        <a href="#" class="action-link danger">删除</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <a href="#" class="link text-sm" style="max-width: 150px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Node.js 后端开发指南</a>
+                                </td>
+                                <td><div class="table-user"><div class="table-user-avatar">S</div><span class="table-user-name">spammer</span></div></td>
+                                <td>
+                                    <div class="flex gap-xs">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#e5e7eb"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="#e5e7eb"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-sm" style="max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;"><span class="admin-tag admin-tag-danger">广告</span> 加微信xxx领取更多免费资源...</div>
+                                </td>
+                                <td>2天前</td>
+                                <td><span class="status-badge pending">待审核</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link danger">删除</a>
+                                        <a href="#" class="action-link">封禁用户</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination-bar">
+                        <span class="pagination-info">显示 1-3 条，共 23 条待审核</span>
+                        <div class="admin-pagination">
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">2</button>
+                            <button class="pagination-btn">3</button>
+                            <button class="pagination-btn">&raquo;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程列表 - GeekHour 管理后台</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="./index.html" class="admin-logo">
+                    <span class="admin-logo-icon">&lt;/&gt;</span>
+                    <span>GeekHour Admin</span>
+                </a>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-group">
+                    <div class="admin-nav-group-title">课程管理</div>
+                    <a href="./courses.html" class="admin-nav-item active">课程列表</a>
+                    <a href="./recommendations.html" class="admin-nav-item">推荐管理</a>
+                    <a href="./reviews.html" class="admin-nav-item">评价管理</a>
+                    <a href="./instructors.html" class="admin-nav-item">讲师管理</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <div class="admin-breadcrumb">
+                        <a href="./index.html">首页</a>
+                        <span class="separator">/</span>
+                        <span class="current">课程列表</span>
+                    </div>
+                </div>
+                <div class="admin-header-right">
+                    <button class="btn btn-primary btn-sm">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        添加课程
+                    </button>
+                    <div class="admin-user"><div class="avatar avatar-sm">A</div></div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <div class="page-header">
+                    <h1 class="page-title">课程管理</h1>
+                    <p class="page-description">管理平台所有课程内容</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">课程总数</div>
+                            <div class="stat-card-value">328</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">在售课程</div>
+                            <div class="stat-card-value">286</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">草稿/下架</div>
+                            <div class="stat-card-value">42</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">今日销量</div>
+                            <div class="stat-card-value">456</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">课程列表</h3>
+                        <div class="table-actions">
+                            <button class="btn btn-outline btn-sm">批量操作</button>
+                        </div>
+                    </div>
+                    <div class="table-filters">
+                        <select class="admin-select input-sm">
+                            <option>全部状态</option>
+                            <option>在售</option>
+                            <option>草稿</option>
+                            <option>下架</option>
+                        </select>
+                        <select class="admin-select input-sm">
+                            <option>全部分类</option>
+                            <option>前端</option>
+                            <option>后端</option>
+                            <option>移动端</option>
+                            <option>AI/ML</option>
+                        </select>
+                        <select class="admin-select input-sm">
+                            <option>全部难度</option>
+                            <option>入门</option>
+                            <option>进阶</option>
+                            <option>高级</option>
+                        </select>
+                        <input type="text" class="input input-sm" placeholder="搜索课程..." style="flex: 1; min-width: 150px;">
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>课程名称</th>
+                                <th>讲师</th>
+                                <th>分类</th>
+                                <th>难度</th>
+                                <th>价格</th>
+                                <th>销量</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="flex items-center gap-sm">
+                                        <div class="course-cover-small bg-gradient-1" style="width: 60px; height: 36px; border-radius: 4px;"></div>
+                                        <div>
+                                            <div class="font-medium">Vue3 全栈开发实战</div>
+                                            <div class="text-xs text-secondary">32课时 · 8小时</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><div class="table-user"><div class="table-user-avatar">D</div><span class="table-user-name">david</span></div></td>
+                                <td><span class="admin-tag admin-tag-primary">前端</span></td>
+                                <td><span class="badge badge-secondary">进阶</span></td>
+                                <td>¥199</td>
+                                <td>2,345</td>
+                                <td><span class="status-badge published">在售</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="./course-edit.html" class="action-link">编辑</a>
+                                        <a href="#" class="action-link">下架</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="flex items-center gap-sm">
+                                        <div class="course-cover-small bg-gradient-2" style="width: 60px; height: 36px; border-radius: 4px;"></div>
+                                        <div>
+                                            <div class="font-medium">React 18 进阶之路</div>
+                                            <div class="text-xs text-secondary">48课时 · 12小时</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><div class="table-user"><div class="table-user-avatar">A</div><span class="table-user-name">alex</span></div></td>
+                                <td><span class="admin-tag admin-tag-primary">前端</span></td>
+                                <td><span class="badge badge-success">高级</span></td>
+                                <td>¥299</td>
+                                <td>1,876</td>
+                                <td><span class="status-badge published">在售</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="./course-edit.html" class="action-link">编辑</a>
+                                        <a href="#" class="action-link">下架</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="flex items-center gap-sm">
+                                        <div class="course-cover-small bg-gradient-3" style="width: 60px; height: 36px; border-radius: 4px;"></div>
+                                        <div>
+                                            <div class="font-medium">Node.js 后端开发指南</div>
+                                            <div class="text-xs text-secondary">56课时 · 14小时</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><div class="table-user"><div class="table-user-avatar">F</div><span class="table-user-name">frank</span></div></td>
+                                <td><span class="admin-tag admin-tag-warning">后端</span></td>
+                                <td><span class="badge badge-secondary">进阶</span></td>
+                                <td>¥249</td>
+                                <td>1,234</td>
+                                <td><span class="status-badge published">在售</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="./course-edit.html" class="action-link">编辑</a>
+                                        <a href="#" class="action-link">下架</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="flex items-center gap-sm">
+                                        <div class="course-cover-small bg-gradient-1" style="width: 60px; height: 36px; border-radius: 4px;"></div>
+                                        <div>
+                                            <div class="font-medium">Python 机器学习入门</div>
+                                            <div class="text-xs text-secondary">40课时 · 10小时</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><div class="table-user"><div class="table-user-avatar">G</div><span class="table-user-name">grace</span></div></td>
+                                <td><span class="admin-tag admin-tag-success">AI/ML</span></td>
+                                <td><span class="badge badge-gray">入门</span></td>
+                                <td>¥179</td>
+                                <td>987</td>
+                                <td><span class="status-badge draft">草稿</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="./course-edit.html" class="action-link">编辑</a>
+                                        <a href="#" class="action-link" style="color: var(--success-color);">上架</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox"></td>
+                                <td>
+                                    <div class="flex items-center gap-sm">
+                                        <div class="course-cover-small bg-gradient-2" style="width: 60px; height: 36px; border-radius: 4px;"></div>
+                                        <div>
+                                            <div class="font-medium">Flutter 跨平台开发</div>
+                                            <div class="text-xs text-secondary">36课时 · 9小时</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><div class="table-user"><div class="table-user-avatar">H</div><span class="table-user-name">henry</span></div></td>
+                                <td><span class="admin-tag admin-tag-secondary">移动端</span></td>
+                                <td><span class="badge badge-secondary">进阶</span></td>
+                                <td>¥229</td>
+                                <td>654</td>
+                                <td><span class="status-badge published">在售</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="./course-edit.html" class="action-link">编辑</a>
+                                        <a href="#" class="action-link">下架</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination-bar">
+                        <span class="pagination-info">显示 1-5 条，共 328 条</span>
+                        <div class="admin-pagination">
+                            <button class="pagination-btn" disabled>&laquo;</button>
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">2</button>
+                            <button class="pagination-btn">3</button>
+                            <span class="pagination-ellipsis">...</span>
+                            <button class="pagination-btn">66</button>
+                            <button class="pagination-btn">&raquo;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

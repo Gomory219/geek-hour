@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推广管理 - GeekHour 管理后台</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="./index.html" class="admin-logo">
+                    <span class="admin-logo-icon">&lt;/&gt;</span>
+                    <span>GeekHour Admin</span>
+                </a>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-group">
+                    <div class="admin-nav-group-title">营销工具</div>
+                    <a href="./coupons.html" class="admin-nav-item">优惠券</a>
+                    <a href="./activities.html" class="admin-nav-item">限时活动</a>
+                    <a href="./memberships.html" class="admin-nav-item">会员管理</a>
+                    <a href="./promotions.html" class="admin-nav-item active">推广管理</a>
+                    <a href="./notifications.html" class="admin-nav-item">消息推送</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <div class="admin-breadcrumb">
+                        <a href="./index.html">首页</a>
+                        <span class="separator">/</span>
+                        <span class="current">推广管理</span>
+                    </div>
+                </div>
+                <div class="admin-header-right">
+                    <button class="btn btn-primary btn-sm">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        创建推广
+                    </button>
+                    <div class="admin-user"><div class="avatar avatar-sm">A</div></div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <div class="page-header">
+                    <h1 class="page-title">推广管理</h1>
+                    <p class="page-description">管理推广链接和佣金结算</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">推广员总数</div>
+                            <div class="stat-card-value">1,234</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">今日新增</div>
+                            <div class="stat-card-value">56</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">推广订单</div>
+                            <div class="stat-card-value">8,901</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">待结算佣金</div>
+                            <div class="stat-card-value">¥45,678</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-tabs">
+                    <button class="admin-tab active">推广链接</button>
+                    <button class="admin-tab">推广员列表</button>
+                    <button class="admin-tab">佣金结算</button>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">推广链接</h3>
+                        <div class="table-actions">
+                            <input type="text" class="input input-sm" placeholder="搜索推广链接..." style="width: 200px;">
+                        </div>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>链接名称</th>
+                                <th>推广链接</th>
+                                <th>创建者</th>
+                                <th>点击量</th>
+                                <th>注册数</th>
+                                <th>订单数</th>
+                                <th>佣金比例</th>
+                                <th>累计佣金</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="font-medium">Vue3课程推广</div>
+                                    <div class="text-xs text-secondary">2024-01-15 创建</div>
+                                </td>
+                                <td>
+                                    <div class="flex items-center gap-sm">
+                                        <code class="text-xs" style="background: var(--bg-hover); padding: 4px 8px; border-radius: 4px;">https://geekhour.com/r/abc123</code>
+                                        <button class="btn btn-ghost btn-sm">复制</button>
+                                    </div>
+                                </td>
+                                <td><div class="table-user"><div class="table-user-avatar">A</div><span class="table-user-name">alex</span></div></td>
+                                <td>12,345</td>
+                                <td>1,234</td>
+                                <td>345</td>
+                                <td><span class="text-success font-semibold">20%</span></td>
+                                <td>¥12,345</td>
+                                <td><span class="status-badge active">启用</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">详情</a>
+                                        <a href="#" class="action-link">停用</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="font-medium">春季活动推广</div>
+                                    <div class="text-xs text-secondary">2024-03-01 创建</div>
+                                </td>
+                                <td>
+                                    <div class="flex items-center gap-sm">
+                                        <code class="text-xs" style="background: var(--bg-hover); padding: 4px 8px; border-radius: 4px;">https://geekhour.com/r/spring2024</code>
+                                        <button class="btn btn-ghost btn-sm">复制</button>
+                                    </div>
+                                </td>
+                                <td><div class="table-user"><div class="table-user-avatar">B</div><span class="table-user-name">bob</span></div></td>
+                                <td>8,765</td>
+                                <td>876</td>
+                                <td>234</td>
+                                <td><span class="text-success font-semibold">15%</span></td>
+                                <td>¥6,543</td>
+                                <td><span class="status-badge active">启用</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">详情</a>
+                                        <a href="#" class="action-link">停用</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="font-medium">新人专属推广</div>
+                                    <div class="text-xs text-secondary">2024-02-20 创建</div>
+                                </td>
+                                <td>
+                                    <div class="flex items-center gap-sm">
+                                        <code class="text-xs" style="background: var(--bg-hover); padding: 4px 8px; border-radius: 4px;">https://geekhour.com/r/newbie</code>
+                                        <button class="btn btn-ghost btn-sm">复制</button>
+                                    </div>
+                                </td>
+                                <td><div class="table-user"><div class="table-user-avatar">C</div><span class="table-user-name">charlie</span></div></td>
+                                <td>5,432</td>
+                                <td>543</td>
+                                <td>123</td>
+                                <td><span class="text-success font-semibold">25%</span></td>
+                                <td>¥4,321</td>
+                                <td><span class="status-badge inactive">已停用</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">详情</a>
+                                        <a href="#" class="action-link" style="color: var(--success-color);">启用</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="font-medium">AI课程推广</div>
+                                    <div class="text-xs text-secondary">2024-03-10 创建</div>
+                                </td>
+                                <td>
+                                    <div class="flex items-center gap-sm">
+                                        <code class="text-xs" style="background: var(--bg-hover); padding: 4px 8px; border-radius: 4px;">https://geekhour.com/r/ai2024</code>
+                                        <button class="btn btn-ghost btn-sm">复制</button>
+                                    </div>
+                                </td>
+                                <td><div class="table-user"><div class="table-user-avatar">D</div><span class="table-user-name">david</span></div></td>
+                                <td>3,210</td>
+                                <td>321</td>
+                                <td>89</td>
+                                <td><span class="text-success font-semibold">20%</span></td>
+                                <td>¥2,109</td>
+                                <td><span class="status-badge active">启用</span></td>
+                                <td>
+                                    <div class="table-actions-cell">
+                                        <a href="#" class="action-link">详情</a>
+                                        <a href="#" class="action-link">停用</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination-bar">
+                        <span class="pagination-info">显示 1-4 条，共 1,234 条</span>
+                        <div class="admin-pagination">
+                            <button class="pagination-btn" disabled>&laquo;</button>
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">2</button>
+                            <button class="pagination-btn">3</button>
+                            <span class="pagination-ellipsis">...</span>
+                            <button class="pagination-btn">309</button>
+                            <button class="pagination-btn">&raquo;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

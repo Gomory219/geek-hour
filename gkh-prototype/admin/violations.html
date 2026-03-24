@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>违规记录 - GeekHour 管理后台</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="./index.html" class="admin-logo">
+                    <span class="admin-logo-icon">&lt;/&gt;</span>
+                    <span>GeekHour Admin</span>
+                </a>
+            </div>
+            <nav class="admin-nav">
+                <div class="admin-nav-group">
+                    <div class="admin-nav-group-title">内容审核</div>
+                    <a href="./posts-review.html" class="admin-nav-item">帖子审核</a>
+                    <a href="./comments-review.html" class="admin-nav-item">评论审核</a>
+                    <a href="./reports.html" class="admin-nav-item">举报处理</a>
+                    <a href="./violations.html" class="admin-nav-item active">违规记录</a>
+                    <a href="./sensitive-words.html" class="admin-nav-item">敏感词库</a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <div class="admin-breadcrumb">
+                        <a href="./index.html">首页</a>
+                        <span class="separator">/</span>
+                        <span class="current">违规记录</span>
+                    </div>
+                </div>
+                <div class="admin-header-right">
+                    <div class="admin-user"><div class="avatar avatar-sm">A</div></div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <div class="page-header">
+                    <h1 class="page-title">违规记录</h1>
+                    <p class="page-description">查看和管理用户违规记录</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">总违规次数</div>
+                            <div class="stat-card-value">1,234</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">今日违规</div>
+                            <div class="stat-card-value">23</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-main">
+                            <div class="stat-card-label">已封禁用户</div>
+                            <div class="stat-card-value">128</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">违规记录</h3>
+                    </div>
+                    <div class="table-filters">
+                        <select class="admin-select input-sm">
+                            <option>全部类型</option>
+                            <option>发布垃圾广告</option>
+                            <option>人身攻击</option>
+                            <option>违法违规内容</option>
+                            <option>恶意刷屏</option>
+                            <option>抄袭</option>
+                        </select>
+                        <select class="admin-select input-sm">
+                            <option>全部处罚</option>
+                            <option>警告</option>
+                            <option>禁言</option>
+                            <option>封禁</option>
+                        </select>
+                    </div>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>违规用户</th>
+                                <th>违规类型</th>
+                                <th>违规内容</th>
+                                <th>处罚措施</th>
+                                <th>处罚期限</th>
+                                <th>违规时间</th>
+                                <th>操作人</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="table-user-avatar">S</div>
+                                        <span class="table-user-name">spammer_001</span>
+                                    </div>
+                                </td>
+                                <td><span class="admin-tag admin-tag-danger">发布垃圾广告</span></td>
+                                <td>
+                                    <div class="text-sm" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">评论中包含广告链接...</div>
+                                </td>
+                                <td><span class="status-badge banned">永久封禁</span></td>
+                                <td>-</td>
+                                <td>2024-03-20 14:30</td>
+                                <td>admin</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="table-user-avatar">T</div>
+                                        <span class="table-user-name">troll_2024</span>
+                                    </div>
+                                </td>
+                                <td><span class="admin-tag admin-tag-warning">人身攻击</span></td>
+                                <td>
+                                    <div class="text-sm" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">对其他用户进行言语攻击...</div>
+                                </td>
+                                <td><span class="status-badge blocked">禁言7天</span></td>
+                                <td>2024-03-27</td>
+                                <td>2024-03-19 10:15</td>
+                                <td>admin</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="table-user-avatar">C</div>
+                                        <span class="table-user-name">copycat_dev</span>
+                                    </div>
+                                </td>
+                                <td><span class="admin-tag">抄袭</span></td>
+                                <td>
+                                    <div class="text-sm" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">文章内容与原文高度相似...</div>
+                                </td>
+                                <td><span class="status-badge warning">警告</span></td>
+                                <td>-</td>
+                                <td>2024-03-18 16:45</td>
+                                <td>admin</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="table-user-avatar">B</div>
+                                        <span class="table-user-name">bot_spam</span>
+                                    </div>
+                                </td>
+                                <td><span class="admin-tag admin-tag-danger">恶意刷屏</span></td>
+                                <td>
+                                    <div class="text-sm" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">短时间内大量重复评论...</div>
+                                </td>
+                                <td><span class="status-badge banned">封禁30天</span></td>
+                                <td>2024-04-19</td>
+                                <td>2024-03-17 09:20</td>
+                                <td>system</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="table-user">
+                                        <div class="table-user-avatar">X</div>
+                                        <span class="table-user-name">xxx_user</span>
+                                    </div>
+                                </td>
+                                <td><span class="admin-tag admin-tag-danger">违法违规</span></td>
+                                <td>
+                                    <div class="text-sm" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">发布违反法律法规内容...</div>
+                                </td>
+                                <td><span class="status-badge banned">永久封禁</span></td>
+                                <td>-</td>
+                                <td>2024-03-15 11:30</td>
+                                <td>admin</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination-bar">
+                        <span class="pagination-info">显示 1-5 条，共 1,234 条</span>
+                        <div class="admin-pagination">
+                            <button class="pagination-btn" disabled>&laquo;</button>
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">2</button>
+                            <button class="pagination-btn">3</button>
+                            <span class="pagination-ellipsis">...</span>
+                            <button class="pagination-btn">247</button>
+                            <button class="pagination-btn">&raquo;</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
