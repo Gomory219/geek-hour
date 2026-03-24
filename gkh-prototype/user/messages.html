@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消息通知 - GeekHour</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/user.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon">&lt;/&gt;</span>
+                    <span class="logo-text">GeekHour</span>
+                </a>
+
+                <nav class="nav">
+                    <a href="../index.html" class="nav-item">首页</a>
+                    <a href="../course/index.html" class="nav-item">课程</a>
+                    <a href="../community/index.html" class="nav-item">社区</a>
+                </nav>
+
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="搜索..." id="searchInput">
+                    <button class="search-btn" onclick="handleSearch()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="user-actions">
+                    <div class="dropdown">
+                        <button class="user-dropdown-btn">
+                            <div class="avatar avatar-sm">U</div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="./profile.html" class="dropdown-item">个人主页</a>
+                            <a href="./learning.html" class="dropdown-item">学习记录</a>
+                            <a href="./content.html" class="dropdown-item">内容管理</a>
+                            <a href="./messages.html" class="dropdown-item">消息通知</a>
+                            <a href="./settings.html" class="dropdown-item">账户设置</a>
+                            <div class="divider"></div>
+                            <a href="#" class="dropdown-item">退出登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">首页</a>
+                <span class="separator">/</span>
+                <span class="current">消息通知</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="main">
+        <div class="container">
+            <div class="user-layout">
+                <!-- Sidebar -->
+                <aside class="user-sidebar">
+                    <div class="user-menu-card">
+                        <div class="user-menu-header">
+                            <div class="avatar user-menu-avatar">U</div>
+                            <span class="user-menu-name">username_123</span>
+                            <span class="user-menu-bio">热爱编程，终身学习</span>
+                            <span class="user-menu-level">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                熟手
+                            </span>
+                        </div>
+                        <nav class="user-menu-list">
+                            <a href="./profile.html" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                个人主页
+                            </a>
+                            <a href="./learning.html" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                                </svg>
+                                学习记录
+                            </a>
+                            <a href="./content.html" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                                内容管理
+                            </a>
+                            <a href="./messages.html" class="user-menu-item active">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                </svg>
+                                消息通知
+                            </a>
+                            <a href="./settings.html" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                </svg>
+                                账户设置
+                            </a>
+                        </nav>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <div class="user-content">
+                    <div class="flex items-center justify-between mb-lg">
+                        <h1 class="page-title-sm">消息通知</h1>
+                        <button class="btn btn-ghost btn-sm">全部已读</button>
+                    </div>
+
+                    <!-- Message Tabs -->
+                    <div class="post-tabs">
+                        <button class="post-tab active">全部</button>
+                        <button class="post-tab">互动</button>
+                        <button class="post-tab">系统</button>
+                        <button class="post-tab">私信</button>
+                    </div>
+
+                    <!-- Messages List -->
+                    <div class="content-card">
+                        <div class="message-list">
+                            <a href="../community/detail.html" class="message-item unread">
+                                <div class="message-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="m12 20 9-9-9-9-9 9 9 9z"></path>
+                                    </svg>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-title">alex_dev 赞了你的评论</div>
+                                    <div class="message-preview">"Lorem ipsum dolor sit amet, consectetur adipiscing elit..."</div>
+                                </div>
+                                <span class="message-time">5分钟前</span>
+                            </a>
+
+                            <a href="../community/detail.html" class="message-item unread">
+                                <div class="message-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-title">bob_coder 回复了你的帖子</div>
+                                    <div class="message-preview">"Eiusmod tempor incididunt ut labore et dolore magna aliqua..."</div>
+                                </div>
+                                <span class="message-time">30分钟前</span>
+                            </a>
+
+                            <a href="../community/detail.html" class="message-item">
+                                <div class="message-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="8.5" cy="7" r="4"></circle>
+                                        <line x1="20" y1="8" x2="20" y2="14"></line>
+                                        <line x1="23" y1="11" x2="17" y2="11"></line>
+                                    </svg>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-title">charlie_tech 关注了你</div>
+                                    <div class="message-preview">查看他的主页</div>
+                                </div>
+                                <span class="message-time">2小时前</span>
+                            </a>
+
+                            <a href="#" class="message-item">
+                                <div class="message-icon" style="color: var(--primary-color);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2z"></path>
+                                        <path d="M18 13v-5c0-3.07-1.63-5.64-4.5-6.32V1h-3v.68C7.64 2.36 6 4.92 6 8v5l-2 2v1h16v-1l-2-2z"></path>
+                                    </svg>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-title">系统通知</div>
+                                    <div class="message-preview">您关注的课程"Lorem ipsum dolor"已更新新的章节</div>
+                                </div>
+                                <span class="message-time">昨天</span>
+                            </a>
+
+                            <a href="#" class="message-item">
+                                <div class="message-icon" style="color: var(--primary-color);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-title">系统通知</div>
+                                    <div class="message-preview">恭喜！您已连续签到7天，获得徽章奖励</div>
+                                </div>
+                                <span class="message-time">3天前</span>
+                            </a>
+
+                            <a href="#" class="message-item">
+                                <div class="message-icon" style="color: var(--success-color);">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                                        <path d="M4 22h16"></path>
+                                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                                    </svg>
+                                </div>
+                                <div class="message-content">
+                                    <div class="message-title">系统通知</div>
+                                    <div class="message-preview">您已成功完成课程"Ut enim ad minim"，获得学习证书</div>
+                                </div>
+                                <span class="message-time">1周前</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 GeekHour. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

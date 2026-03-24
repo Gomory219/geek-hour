@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeekHour - 编程学习平台</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <!-- Logo -->
+                <a href="./index.html" class="logo">
+                    <span class="logo-icon">&lt;/&gt;</span>
+                    <span class="logo-text">GeekHour</span>
+                </a>
+
+                <!-- Navigation -->
+                <nav class="nav">
+                    <a href="./index.html" class="nav-item active">首页</a>
+                    <a href="./course/index.html" class="nav-item">课程</a>
+                    <a href="./community/index.html" class="nav-item">社区</a>
+                </nav>
+
+                <!-- Search -->
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="搜索课程、帖子、用户..." id="searchInput">
+                    <button class="search-btn" onclick="handleSearch()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- User Actions -->
+                <div class="user-actions">
+                    <a href="./auth/login.html" class="btn btn-ghost btn-sm">登录</a>
+                    <a href="./auth/register.html" class="btn btn-primary btn-sm">注册</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">学编程，来这里就对了</h1>
+                    <p class="hero-subtitle">系统化学习路径 + 活跃的开发者社区，一站式编程学习平台</p>
+                    <div class="hero-actions">
+                        <a href="./course/index.html" class="btn btn-primary btn-lg">开始学习</a>
+                        <a href="./community/index.html" class="btn btn-outline btn-lg">加入社区</a>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">精品课程</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50万+</div>
+                        <div class="stat-label">活跃用户</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100万+</div>
+                        <div class="stat-label">社区帖子</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="categories">
+            <div class="container">
+                <h2 class="section-title">技术分类</h2>
+                <div class="category-grid">
+                    <a href="./course/index.html?category=frontend" class="category-card">
+                        <div class="category-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                                <path d="M3 9h18"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-name">前端开发</h3>
+                        <p class="category-desc">HTML/CSS/JavaScript、Vue、React</p>
+                    </a>
+                    <a href="./course/index.html?category=backend" class="category-card">
+                        <div class="category-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"></path>
+                                <path d="M4 7V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2"></path>
+                                <path d="M12 12v6"></path>
+                                <path d="M8 12h8"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-name">后端开发</h3>
+                        <p class="category-desc">Java、Go、Node.js、Python</p>
+                    </a>
+                    <a href="./course/index.html?category=mobile" class="category-card">
+                        <div class="category-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="5" y="2" width="14" height="20" rx="2"></rect>
+                                <path d="M12 18h.01"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-name">移动开发</h3>
+                        <p class="category-desc">iOS、Android、Flutter、RN</p>
+                    </a>
+                    <a href="./course/index.html?category=ai" class="category-card">
+                        <div class="category-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 16a6 6 0 1 1 6-6 6 6 0 0 1-6 6z"></path>
+                                <circle cx="12" cy="12" r="2"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="category-name">人工智能</h3>
+                        <p class="category-desc">机器学习、深度学习、NLP</p>
+                    </a>
+                    <a href="./course/index.html?category=devops" class="category-card">
+                        <div class="category-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 12h-4"></path>
+                                <path d="M6 12H2"></path>
+                                <path d="M12 6V2"></path>
+                                <path d="M12 22v-4"></path>
+                                <path d="m19 19-2.8-2.8"></path>
+                                <path d="M7.8 7.8 5 5"></path>
+                                <path d="m19 5-2.8 2.8"></path>
+                                <path d="M7.8 16.2 5 19"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-name">DevOps</h3>
+                        <p class="category-desc">Docker、K8s、CI/CD</p>
+                    </a>
+                    <a href="./course/index.html?category=database" class="category-card">
+                        <div class="category-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                                <path d="M3 5V19A9 3 0 0 0 21 19V5"></path>
+                            </svg>
+                        </div>
+                        <h3 class="category-name">数据库</h3>
+                        <p class="category-desc">MySQL、Redis、MongoDB</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hot Courses -->
+        <section class="hot-courses section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">热门课程</h2>
+                    <a href="./course/index.html" class="link">查看全部 &rarr;</a>
+                </div>
+                <div class="course-grid">
+                    <a href="./course/detail.html" class="course-card card card-hover">
+                        <div class="course-cover">
+                            <div class="course-placeholder bg-gradient-1"></div>
+                            <span class="badge badge-success">免费</span>
+                        </div>
+                        <div class="course-info">
+                            <h3 class="course-title">Lorem ipsum dolor sit amet</h3>
+                            <p class="course-desc">Consectetur adipiscing elit sed do eiusmod tempor</p>
+                            <div class="course-meta">
+                                <span class="tag">入门</span>
+                                <span class="course-students">2.3万人已学</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="./course/detail.html" class="course-card card card-hover">
+                        <div class="course-cover">
+                            <div class="course-placeholder bg-gradient-2"></div>
+                            <span class="badge badge-warning">VIP</span>
+                        </div>
+                        <div class="course-info">
+                            <h3 class="course-title">Eiusmod tempor incididunt</h3>
+                            <p class="course-desc">Ut labore et dolore magna aliqua</p>
+                            <div class="course-meta">
+                                <span class="tag">进阶</span>
+                                <span class="course-students">1.8万人已学</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="./course/detail.html" class="course-card card card-hover">
+                        <div class="course-cover">
+                            <div class="course-placeholder bg-gradient-3"></div>
+                            <span class="badge badge-primary">¥99</span>
+                        </div>
+                        <div class="course-info">
+                            <h3 class="course-title">Ut enim ad minim veniam</h3>
+                            <p class="course-desc">Quis nostrud exercitation ullamco</p>
+                            <div class="course-meta">
+                                <span class="tag">高级</span>
+                                <span class="course-students">8千人已学</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="./course/detail.html" class="course-card card card-hover">
+                        <div class="course-cover">
+                            <div class="course-placeholder bg-gradient-4"></div>
+                            <span class="badge badge-primary">¥199</span>
+                        </div>
+                        <div class="course-info">
+                            <h3 class="course-title">Duis aute irure dolor</h3>
+                            <p class="course-desc">In reprehenderit in voluptate velit</p>
+                            <div class="course-meta">
+                                <span class="tag">入门</span>
+                                <span class="course-students">1.2万人已学</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Posts -->
+        <section class="community-posts section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">社区热议</h2>
+                    <a href="./community/index.html" class="link">查看全部 &rarr;</a>
+                </div>
+                <div class="post-list">
+                    <a href="./community/detail.html" class="post-card card card-hover">
+                        <div class="post-content">
+                            <h3 class="post-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+                            <p class="post-excerpt">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation...</p>
+                            <div class="post-meta">
+                                <div class="author">
+                                    <div class="avatar avatar-sm">U</div>
+                                    <span>username_123</span>
+                                </div>
+                                <div class="post-tags">
+                                    <span class="tag">技术问答</span>
+                                </div>
+                                <div class="post-stats">
+                                    <span class="stat">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="m12 20 9-9-9-9-9 9 9 9z"></path>
+                                        </svg>
+                                        128
+                                    </span>
+                                    <span class="stat">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                        </svg>
+                                        56
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="./community/detail.html" class="post-card card card-hover">
+                        <div class="post-content">
+                            <h3 class="post-title">Eiusmod tempor incididunt ut labore et dolore magna aliqua</h3>
+                            <p class="post-excerpt">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat...</p>
+                            <div class="post-meta">
+                                <div class="author">
+                                    <div class="avatar avatar-sm">D</div>
+                                    <span>developer_pro</span>
+                                </div>
+                                <div class="post-tags">
+                                    <span class="tag">经验分享</span>
+                                </div>
+                                <div class="post-stats">
+                                    <span class="stat">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="m12 20 9-9-9-9-9 9 9 9z"></path>
+                                        </svg>
+                                        256
+                                    </span>
+                                    <span class="stat">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                        </svg>
+                                        89
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="./community/detail.html" class="post-card card card-hover">
+                        <div class="post-content">
+                            <h3 class="post-title">Excepteur sint occaecat cupidatat non proident</h3>
+                            <p class="post-excerpt">Sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus...</p>
+                            <div class="post-meta">
+                                <div class="author">
+                                    <div class="avatar avatar-sm">C</div>
+                                    <span>code_master</span>
+                                </div>
+                                <div class="post-tags">
+                                    <span class="tag">项目展示</span>
+                                </div>
+                                <div class="post-stats">
+                                    <span class="stat">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="m12 20 9-9-9-9-9 9 9 9z"></path>
+                                        </svg>
+                                        512
+                                    </span>
+                                    <span class="stat">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                        </svg>
+                                        124
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">关于我们</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">平台介绍</a></li>
+                        <li><a href="#" class="footer-link">加入我们</a></li>
+                        <li><a href="#" class="footer-link">联系方式</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">帮助中心</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">常见问题</a></li>
+                        <li><a href="#" class="footer-link">用户协议</a></li>
+                        <li><a href="#" class="footer-link">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">合作伙伴</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">企业合作</a></li>
+                        <li><a href="#" class="footer-link">讲师入驻</a></li>
+                        <li><a href="#" class="footer-link">广告合作</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">关注我们</h4>
+                    <div class="footer-social">
+                        <a href="#" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GeekHour. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>

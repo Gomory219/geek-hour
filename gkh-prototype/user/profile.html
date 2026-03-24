@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页 - GeekHour</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/user.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon">&lt;/&gt;</span>
+                    <span class="logo-text">GeekHour</span>
+                </a>
+
+                <nav class="nav">
+                    <a href="../index.html" class="nav-item">首页</a>
+                    <a href="../course/index.html" class="nav-item">课程</a>
+                    <a href="../community/index.html" class="nav-item">社区</a>
+                </nav>
+
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="搜索..." id="searchInput">
+                    <button class="search-btn" onclick="handleSearch()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="user-actions">
+                    <div class="dropdown">
+                        <button class="user-dropdown-btn">
+                            <div class="avatar avatar-sm">U</div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width-2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="./profile.html" class="dropdown-item">个人主页</a>
+                            <a href="./learning.html" class="dropdown-item">学习记录</a>
+                            <a href="./content.html" class="dropdown-item">内容管理</a>
+                            <a href="./messages.html" class="dropdown-item">消息通知</a>
+                            <a href="./settings.html" class="dropdown-item">账户设置</a>
+                            <div class="divider"></div>
+                            <a href="#" class="dropdown-item">退出登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">首页</a>
+                <span class="separator">/</span>
+                <span class="current">个人主页</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="main">
+        <div class="container">
+            <div class="user-layout">
+                <!-- Sidebar -->
+                <aside class="user-sidebar">
+                    <div class="user-menu-card">
+                        <div class="user-menu-header">
+                            <div class="avatar user-menu-avatar">U</div>
+                            <span class="user-menu-name">username_123</span>
+                            <span class="user-menu-bio">热爱编程，终身学习</span>
+                            <span class="user-menu-level">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                熟手
+                            </span>
+                        </div>
+                        <nav class="user-menu-list">
+                            <a href="./profile.html" class="user-menu-item active">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                个人主页
+                            </a>
+                            <a href="./learning.html" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                                </svg>
+                                学习记录
+                            </a>
+                            <a href="./content.html" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                                内容管理
+                            </a>
+                            <a href="./messages.html" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                </svg>
+                                消息通知
+                            </a>
+                            <a href="./settings.html" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.39a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                账户设置
+                            </a>
+                        </nav>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <div class="user-content">
+                    <!-- Profile Header -->
+                    <div class="profile-header">
+                        <div class="profile-info">
+                            <div class="avatar profile-avatar">U</div>
+                            <div class="profile-details">
+                                <h1>username_123</h1>
+                                <p class="profile-bio">热爱编程，终身学习 | 前端开发工程师 | Lorem ipsum dolor sit amet</p>
+                                <div class="profile-stats">
+                                    <div class="profile-stat">
+                                        <div class="profile-stat-value">128</div>
+                                        <div class="profile-stat-label">帖子</div>
+                                    </div>
+                                    <div class="profile-stat">
+                                        <div class="profile-stat-value">2.3k</div>
+                                        <div class="profile-stat-label">粉丝</div>
+                                    </div>
+                                    <div class="profile-stat">
+                                        <div class="profile-stat-value">5.6k</div>
+                                        <div class="profile-stat-label">获赞</div>
+                                    </div>
+                                    <div class="profile-stat">
+                                        <div class="profile-stat-value">15</div>
+                                        <div class="profile-stat-label">课程</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="btn btn-sm">编辑资料</button>
+                            <button class="btn btn-sm">分享主页</button>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <div class="content-card">
+                        <h2 class="content-card-title">技术栈</h2>
+                        <div class="skill-list">
+                            <span class="skill-item">JavaScript</span>
+                            <span class="skill-item">Vue</span>
+                            <span class="skill-item">React</span>
+                            <span class="skill-item">Node.js</span>
+                            <span class="skill-item">TypeScript</span>
+                            <span class="skill-item">HTML/CSS</span>
+                            <span class="skill-item">Webpack</span>
+                            <span class="skill-item">Git</span>
+                        </div>
+                    </div>
+
+                    <!-- Recent Posts -->
+                    <div class="content-card">
+                        <h2 class="content-card-title">最近发布</h2>
+                        <div class="content-list">
+                            <a href="../community/detail.html" class="content-list-item">
+                                <span class="content-item-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                                <span class="content-item-meta">2小时前 · 128 回复</span>
+                            </a>
+                            <a href="../community/detail.html" class="content-list-item">
+                                <span class="content-item-title">Eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
+                                <span class="content-item-meta">昨天 · 89 回复</span>
+                            </a>
+                            <a href="../community/detail.html" class="content-list-item">
+                                <span class="content-item-title">Ut enim ad minim veniam quis nostrud exercitation</span>
+                                <span class="content-item-meta">3天前 · 56 回复</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Badges -->
+                    <div class="content-card">
+                        <h2 class="content-card-title">成就徽章</h2>
+                        <div class="skill-list">
+                            <span class="badge badge-primary">连续签到7天</span>
+                            <span class="badge badge-success">首次发帖</span>
+                            <span class="badge badge-warning">优质回答</span>
+                            <span class="badge badge-secondary">课程达人</span>
+                            <span class="badge badge-gray">社区新星</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 GeekHour. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

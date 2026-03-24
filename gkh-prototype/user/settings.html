@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>账户设置 - GeekHour</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/user.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon">&lt;/&gt;</span>
+                    <span class="logo-text">GeekHour</span>
+                </a>
+
+                <nav class="nav">
+                    <a href="../index.html" class="nav-item">首页</a>
+                    <a href="../course/index.html" class="nav-item">课程</a>
+                    <a href="../community/index.html" class="nav-item">社区</a>
+                </nav>
+
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="搜索..." id="searchInput">
+                    <button class="search-btn" onclick="handleSearch()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="user-actions">
+                    <div class="dropdown">
+                        <button class="user-dropdown-btn">
+                            <div class="avatar avatar-sm">U</div>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="./profile.html" class="dropdown-item">个人主页</a>
+                            <a href="./learning.html" class="dropdown-item">学习记录</a>
+                            <a href="./content.html" class="dropdown-item">内容管理</a>
+                            <a href="./messages.html" class="dropdown-item">消息通知</a>
+                            <a href="./settings.html" class="dropdown-item">账户设置</a>
+                            <div class="divider"></div>
+                            <a href="#" class="dropdown-item">退出登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-bar">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">首页</a>
+                <span class="separator">/</span>
+                <span class="current">账户设置</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="main">
+        <div class="container">
+            <div class="user-layout">
+                <!-- Sidebar -->
+                <aside class="user-sidebar">
+                    <div class="user-menu-card">
+                        <div class="user-menu-header">
+                            <div class="avatar user-menu-avatar">U</div>
+                            <span class="user-menu-name">username_123</span>
+                            <span class="user-menu-bio">热爱编程，终身学习</span>
+                            <span class="user-menu-level">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                熟手
+                            </span>
+                        </div>
+                        <nav class="user-menu-list">
+                            <a href="./profile.html" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                个人主页
+                            </a>
+                            <a href="./learning.html" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                                </svg>
+                                学习记录
+                            </a>
+                            <a href="./content.html" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                                内容管理
+                            </a>
+                            <a href="./messages.html" class="user-menu-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                </svg>
+                                消息通知
+                            </a>
+                            <a href="./settings.html" class="user-menu-item active">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                </svg>
+                                账户设置
+                            </a>
+                        </nav>
+                    </div>
+                </aside>
+
+                <!-- Main Content -->
+                <div class="user-content">
+                    <h1 class="page-title-sm">账户设置</h1>
+
+                    <div class="content-card">
+                        <form class="settings-form">
+                            <!-- Basic Info -->
+                            <div class="settings-section">
+                                <h2 class="settings-section-title">基本信息</h2>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">用户名</label>
+                                    <input type="text" class="input" value="username_123">
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">昵称</label>
+                                    <input type="text" class="input" value="Username">
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">个人简介</label>
+                                    <textarea class="input" rows="3">热爱编程，终身学习</textarea>
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">邮箱</label>
+                                    <input type="email" class="input" value="user@example.com">
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">手机号</label>
+                                    <input type="tel" class="input" value="138****8888">
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="settings-section">
+                                <h2 class="settings-section-title">密码安全</h2>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">当前密码</label>
+                                    <input type="password" class="input" placeholder="请输入当前密码">
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">新密码</label>
+                                    <input type="password" class="input" placeholder="请输入新密码">
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">确认密码</label>
+                                    <input type="password" class="input" placeholder="请再次输入新密码">
+                                </div>
+                                <div class="form-row form-row-full">
+                                    <button class="btn btn-primary">修改密码</button>
+                                </div>
+                            </div>
+
+                            <!-- Privacy -->
+                            <div class="settings-section">
+                                <h2 class="settings-section-title">隐私设置</h2>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">主页公开</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="form-description">其他人可以查看你的个人主页</span>
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">学习记录</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="form-description">其他人可以查看你的学习记录</span>
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">关注列表</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="form-description">其他人可以查看你关注的人</span>
+                                </div>
+                            </div>
+
+                            <!-- Notifications -->
+                            <div class="settings-section">
+                                <h2 class="settings-section-title">通知设置</h2>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">评论通知</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="form-description">有人评论你的内容时通知</span>
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">点赞通知</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="form-description">有人点赞你的内容时通知</span>
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">关注通知</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="form-description">有人关注你时通知</span>
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">系统通知</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="form-description">接收系统重要通知</span>
+                                </div>
+                                <div class="form-row">
+                                    <label class="form-label form-label-inline">邮件通知</label>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="form-description">通过邮件接收通知</span>
+                                </div>
+                            </div>
+
+                            <!-- Save Button -->
+                            <div class="form-actions">
+                                <button class="btn btn-primary">保存设置</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 GeekHour. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
