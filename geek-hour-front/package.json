@@ -11,8 +11,11 @@
     "generate:api": "node scripts/generate-api.mjs"
   },
   "dependencies": {
+    "@vicons/ionicons5": "^0.13.0",
     "axios": "^1.13.6",
+    "naive-ui": "^2.44.1",
     "pinia": "^2.0.26",
+    "sass": "^1.98.0",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
