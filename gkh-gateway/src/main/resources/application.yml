@@ -1,4 +1,6 @@
 spring:
+  webflux:
+    base-path: /api
   application:
     name: gkh-gateway
   # 服务注册与发现
@@ -9,7 +11,7 @@ spring:
         namespace: 3118b88b-9862-4fcc-8e53-7f291c16ba50
     gateway:
       server:
-        webmvc:
+        webflux:
           routes:
             - id: user-service
               uri: lb://gkh-user
@@ -26,5 +28,36 @@ spring:
 
 server:
   port: 17000
-  servlet:
-    context-path: /api
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: cn.edu.sxu.gkhgateway.controller
+
+knife4j:
+  gateway:
+    # 是否开启
+    enabled: true
+    # 排序规则(tag/operation排序自4.2.0版本新增)
+    # 取值：alpha-默认排序规则，官方swagger-ui默认实现,order-Knife4j提供的增强排序规则，开发者可扩展x-order，根据数值来自定义排序
+    tags-sorter: order
+    operations-sorter: order
+    # 指定服务发现的模式聚合微服务文档，并且是默认`default`分组
+    strategy: discover
+    # 服务发现模式的配置
+    discover:
+      # 开启服务发现模式
+      enabled: true
+      version : openapi3
+      # 如果子服务是OpenAPI3，并且有个性化配置
+      oas3:
+        url: /v3/api-docs?group=default
+
+

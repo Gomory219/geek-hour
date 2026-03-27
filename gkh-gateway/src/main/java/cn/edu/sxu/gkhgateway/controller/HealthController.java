@@ -1,4 +1,4 @@
-package cn.edu.sxu.gkhgateway.health;
+package cn.edu.sxu.gkhgateway.controller;
 
 
 import cn.edu.sxu.common.BaseResponse;
