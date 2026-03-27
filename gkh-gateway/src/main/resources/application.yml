@@ -4,7 +4,9 @@ spring:
   # 服务注册与发现
   cloud:
     nacos:
-      server-addr: 106.54.215.151:8848
+      discovery:
+        server-addr: 106.54.215.151:8848
+        namespace: 3118b88b-9862-4fcc-8e53-7f291c16ba50
     gateway:
       server:
         webmvc:
@@ -15,10 +17,12 @@ spring:
                 - Path=/user/**
               filters:
                 - StripPrefix=2
-  # 配置文件
-  config:
-    import:
-      - nacos:nacos-config-example.properties?refreshEnabled=true
+            - id: resource-service
+              uri: lb://gkh-resource
+              predicates:
+                - Path=/resource/**
+              filters:
+                - StripPrefix=2
 
 server:
   port: 17000

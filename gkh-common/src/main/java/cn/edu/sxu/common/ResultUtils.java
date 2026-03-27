@@ -6,7 +6,7 @@ public class ResultUtils {
     public static <T> BaseResponse<T> success(T data) {
         return new BaseResponse<>(0, "success", data);
     }
-    public static <T> BaseResponse<T> success() {
+    public static BaseResponse<String> success() {
         return new BaseResponse<>(0, "success", null);
     }
 

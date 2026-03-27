@@ -1,4 +1,4 @@
-package cn.edu.sxu.gkhuser.health;
+package cn.edu.sxu.gkhuser.controller;
 
 
 import cn.edu.sxu.common.BaseResponse;

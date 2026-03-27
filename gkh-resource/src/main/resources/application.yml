@@ -1,35 +1,23 @@
 spring:
   application:
-    name: gkh-user
+    name: gkh-resource
   cloud:
     nacos:
-      server-addr: 106.54.215.151:8848
-      config:
-        namespace: 3118b88b-9862-4fcc-8e53-7f291c16ba50
-
+#      server-addr: 106.54.215.151:8848
+#      config:
+#        namespace: 3118b88b-9862-4fcc-8e53-7f291c16ba50
       discovery:
         server-addr: 106.54.215.151:8848
         namespace: 3118b88b-9862-4fcc-8e53-7f291c16ba50
-  config:
-    import:
-      - nacos:data-resource-config.yaml?refreshEnabled=true
-
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://106.54.215.151:5433/gkh-all
-    username: postgres
-    password: ${POSTGRES_PASSWORD}
-
 
 server:
-  port: 17001
+  port: 17002
 
 minio:
   endpoint: http://106.54.215.151:9000
   access-key: root
   secret-key: ${MINIO_SECRET_KEY}
   bucket-name: muse-ai
-
 
 # springdoc-openapi项目配置
 springdoc:
@@ -49,3 +37,4 @@ knife4j:
   enable: true
   setting:
     language: zh_cn
+

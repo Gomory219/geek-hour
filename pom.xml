@@ -23,6 +23,10 @@
         <spring-boot.version>3.5.11</spring-boot.version>
         <spring-cloud.version>2025.0.1</spring-cloud.version>
         <spring-cloud-alibaba.version>2025.0.0.0</spring-cloud-alibaba.version>
+        <mybatis.plus.version>3.5.15</mybatis.plus.version>
+        <freemarker.version>2.3.34</freemarker.version>
+        <spring-boot-openapi.version>2.8.16</spring-boot-openapi.version>
+        <knife4j-openapi3-jakarta-spring-boot-starter.version>4.4.0</knife4j-openapi3-jakarta-spring-boot-starter.version>
     </properties>
 
     <dependencyManagement>
@@ -52,6 +56,32 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${spring-boot-openapi.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+                <version>${knife4j-openapi3-jakarta-spring-boot-starter.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -63,6 +93,7 @@
         <module>gkh-user</module>
         <module>gkh-common</module>
         <module>gkh-gateway</module>
+        <module>gkh-resource</module>
     </modules>
 
 </project>
