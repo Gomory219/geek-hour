@@ -3,6 +3,10 @@
   "include": ["vite.config.*", "vitest.config.*", "cypress.config.*", "playwright.config.*"],
   "compilerOptions": {
     "composite": true,
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationMap": true,
     "types": ["node"],
     "module": "ESNext",
     "moduleResolution": "Bundler"

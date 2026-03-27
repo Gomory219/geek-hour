@@ -3,7 +3,11 @@
     "allow": [
       "Bash(npm ls:*)",
       "Bash(npm install:*)",
-      "Bash(ls \"d:/code/geek-hour/geek-hour-front/node_modules/@vue/tsconfig\"/*.json)"
+      "Bash(ls \"d:/code/geek-hour/geek-hour-front/node_modules/@vue/tsconfig\"/*.json)",
+      "Bash(curl -s http://localhost:17000/api/v3/api-docs/swagger-config)",
+      "Bash(curl -s http://localhost:17000/api/resource/v3/api-docs)",
+      "Bash(curl -s http://localhost:17000/api/user/v3/api-docs)",
+      "Bash(npm run:*)"
     ]
   }
 }

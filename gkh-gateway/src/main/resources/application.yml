@@ -29,18 +29,6 @@ spring:
 server:
   port: 17000
 
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html
-    tags-sorter: alpha
-    operations-sorter: alpha
-  api-docs:
-    path: /v3/api-docs
-  group-configs:
-    - group: 'default'
-      paths-to-match: '/**'
-      packages-to-scan: cn.edu.sxu.gkhgateway.controller
-
 knife4j:
   gateway:
     # 是否开启
@@ -59,5 +47,3 @@ knife4j:
       # 如果子服务是OpenAPI3，并且有个性化配置
       oas3:
         url: /v3/api-docs?group=default
-
-
