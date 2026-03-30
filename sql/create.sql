@@ -140,18 +140,29 @@ CREATE TRIGGER trigger_tb_category_update_time
     FOR EACH ROW
 EXECUTE FUNCTION set_update_time();
 
+DROP TABLE IF EXISTS tb_category_relation;
+
 CREATE TABLE tb_category_relation
 (
+    id         VARCHAR(32) PRIMARY KEY,
     ancestor   BIGINT NOT NULL,
     descendant BIGINT NOT NULL,
     depth      INT,
-    PRIMARY KEY (ancestor, descendant)
+    create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    is_deleted  BOOLEAN   DEFAULT FALSE
 );
 
+COMMENT ON COLUMN tb_category_relation.id IS '分类关系ID';
 COMMENT ON TABLE tb_category_relation IS '分类关系表（闭包表，存储树形结构）';
 COMMENT ON COLUMN tb_category_relation.ancestor IS '祖先节点ID，关联tb_category.id';
 COMMENT ON COLUMN tb_category_relation.descendant IS '子孙节点ID，关联tb_category.id';
 COMMENT ON COLUMN tb_category_relation.depth IS '层级深度：0表示自己，1表示直接子节点，以此类推';
+COMMENT ON COLUMN tb_category_relation.create_time IS '创建时间';
+COMMENT ON COLUMN tb_category_relation.update_time IS '更新时间，自动更新';
+COMMENT ON COLUMN tb_category_relation.is_deleted IS '是否删除（软删除）：true=已删除';
+
+
 
 CREATE TRIGGER trigger_tb_category_relation_update_time
     BEFORE UPDATE

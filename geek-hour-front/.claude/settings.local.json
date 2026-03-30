@@ -8,7 +8,8 @@
       "Bash(curl -s http://localhost:17000/api/resource/v3/api-docs)",
       "Bash(curl -s http://localhost:17000/api/user/v3/api-docs)",
       "Bash(npm run:*)",
-      "Bash(timeout 10 cmd /c \"echo Waiting for dev server...\")"
+      "Bash(timeout 10 cmd /c \"echo Waiting for dev server...\")",
+      "Bash(find /d/code/geek-hour/geek-hour-front/src/components -type f -name *.vue -o -name *.ts -o -name *.js)"
     ]
   }
 }

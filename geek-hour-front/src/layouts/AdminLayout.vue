@@ -84,7 +84,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import {
   HomeOutline as IconIonHomeOutline,
   PersonOutline as IconIonPersonOutline,
@@ -110,6 +110,7 @@ import {
 import { useUserStore } from '@/stores/user'
 
 const route = useRoute()
+const router = useRouter()
 const userStore = useUserStore()
 
 const pageTitle = computed(() => {
@@ -142,6 +143,7 @@ const pageTitle = computed(() => {
 
 const logout = () => {
   userStore.logout()
+  router.push('/admin/login')
 }
 </script>
 

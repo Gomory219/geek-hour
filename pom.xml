@@ -82,6 +82,14 @@
                 <version>${knife4j-openapi3-jakarta-spring-boot-starter.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.mongoplus</groupId>
+                <artifactId>mongo-plus-bom</artifactId>
+                <version>2.1.9</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -94,6 +102,8 @@
         <module>gkh-common</module>
         <module>gkh-gateway</module>
         <module>gkh-resource</module>
+        <module>gkh-course</module>
+        <module>gkh-blog</module>
     </modules>
 
 </project>

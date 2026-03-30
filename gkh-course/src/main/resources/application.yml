@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: gkh-course
+  cloud:
+    nacos:
+      server-addr: 106.54.215.151:8848
+      config:
+        namespace: 3118b88b-9862-4fcc-8e53-7f291c16ba50
+
+      discovery:
+        server-addr: 106.54.215.151:8848
+        namespace: 3118b88b-9862-4fcc-8e53-7f291c16ba50
+  config:
+    import:
+      - nacos:data-resource-config.yaml?refreshEnabled=true
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://106.54.215.151:5433/gkh-all
+    username: postgres
+    password: ${POSTGRES_PASSWORD}
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: is_deleted # 全局逻辑删除字段名(deleted为实体类属性名称)
+      logic-delete-value: 1 # 逻辑已删除值。可选，默认值为 1
+      logic-not-delete-value: 0 # 逻辑未删除值。可选，默认值为 0
+
+server:
+  port: 17003
+
+
+# springdoc-openapi项目配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: cn.edu.sxu.gkhcourse.controller
+  default-flat-param-object: true
+# knife4j的增强配置，不需要增强可以不配
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn

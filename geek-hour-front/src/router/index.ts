@@ -1,5 +1,13 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 
+declare module 'vue-router' {
+  interface RouteMeta {
+    requiresAuth?: boolean
+    requiresAdmin?: boolean
+    guestOnly?: boolean
+  }
+}
+
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
@@ -43,33 +51,39 @@ const routes: RouteRecordRaw[] = [
       {
         path: 'user/profile',
         name: 'UserProfile',
-        component: () => import('@/views/user/profile.vue')
+        component: () => import('@/views/user/profile.vue'),
+        meta: { requiresAuth: true }
       },
       {
         path: 'user/learning',
         name: 'UserLearning',
-        component: () => import('@/views/user/learning.vue')
+        component: () => import('@/views/user/learning.vue'),
+        meta: { requiresAuth: true }
       },
       {
         path: 'user/content',
         name: 'UserContent',
-        component: () => import('@/views/user/content.vue')
+        component: () => import('@/views/user/content.vue'),
+        meta: { requiresAuth: true }
       },
       {
         path: 'user/messages',
         name: 'UserMessages',
-        component: () => import('@/views/user/messages.vue')
+        component: () => import('@/views/user/messages.vue'),
+        meta: { requiresAuth: true }
       },
       {
         path: 'user/settings',
         name: 'UserSettings',
-        component: () => import('@/views/user/settings.vue')
+        component: () => import('@/views/user/settings.vue'),
+        meta: { requiresAuth: true }
       }
     ]
   },
   {
     path: '/login',
     component: () => import('@/layouts/AuthLayout.vue'),
+    meta: { guestOnly: true },
     children: [
       {
         path: '',
@@ -81,6 +95,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/register',
     component: () => import('@/layouts/AuthLayout.vue'),
+    meta: { guestOnly: true },
     children: [
       {
         path: '',
@@ -90,8 +105,15 @@ const routes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/admin/login',
+    name: 'AdminLogin',
+    component: () => import('@/views/admin/login.vue'),
+    meta: { guestOnly: true }
+  },
+  {
     path: '/admin',
     component: () => import('@/layouts/AdminLayout.vue'),
+    meta: { requiresAuth: true, requiresAdmin: true },
     children: [
       {
         path: '',
@@ -210,6 +232,40 @@ const routes: RouteRecordRaw[] = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
+})
+
+router.beforeEach(async (to) => {
+  const { useUserStore } = await import('@/stores/user')
+  const userStore = useUserStore()
+
+  // 有 token 但没有 userInfo（页面刷新），重新获取
+  if (userStore.token && !userStore.userInfo) {
+    try {
+      await userStore.fetchUserInfo()
+    } catch {
+      userStore.clearToken()
+    }
+  }
+
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+  const requiresAdmin = to.matched.some(record => record.meta.requiresAdmin)
+  const guestOnly = to.matched.some(record => record.meta.guestOnly)
+
+  // 已登录用户访问 guestOnly 页面（登录/注册），跳转走
+  if (guestOnly && userStore.isLoggedIn) {
+    return userStore.isAdmin ? '/admin' : '/'
+  }
+
+  // 需要登录但未登录
+  if (requiresAuth && !userStore.isLoggedIn) {
+    // admin 路由跳管理员登录页，其他跳用户登录页
+    return requiresAdmin ? '/admin/login' : { path: '/login', query: { redirect: to.fullPath } }
+  }
+
+  // 需要管理员权限但非管理员
+  if (requiresAdmin && !userStore.isAdmin) {
+    return '/'
+  }
 })
 
 export default router

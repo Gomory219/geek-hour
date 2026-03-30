@@ -12,7 +12,7 @@
         <div class="user-actions">
           <template v-if="userStore.isLoggedIn">
             <router-link to="/user/profile">个人中心</router-link>
-            <a @click="userStore.logout">退出</a>
+            <a @click="handleLogout">退出</a>
           </template>
           <template v-else>
             <router-link to="/login">登录</router-link>
@@ -31,9 +31,16 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import { useUserStore } from '@/stores/user'
 
+const router = useRouter()
 const userStore = useUserStore()
+
+const handleLogout = () => {
+  userStore.logout()
+  router.push('/')
+}
 </script>
 
 <style scoped lang="scss">

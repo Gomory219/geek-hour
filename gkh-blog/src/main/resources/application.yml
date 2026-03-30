@@ -1,0 +1,69 @@
+spring:
+  application:
+    name: gkh-blog
+  cloud:
+    nacos:
+      server-addr: 106.54.215.151:8848
+      config:
+        namespace: 3118b88b-9862-4fcc-8e53-7f291c16ba50
+
+      discovery:
+        server-addr: 106.54.215.151:8848
+        namespace: 3118b88b-9862-4fcc-8e53-7f291c16ba50
+  config:
+    import:
+      - nacos:data-resource-config.yaml?refreshEnabled=true
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://106.54.215.151:5433/gkh-all
+    username: postgres
+    password: ${POSTGRES_PASSWORD}
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: is_deleted # 全局逻辑删除字段名(deleted为实体类属性名称)
+      logic-delete-value: 1 # 逻辑已删除值。可选，默认值为 1
+      logic-not-delete-value: 0 # 逻辑未删除值。可选，默认值为 0
+
+server:
+  port: 17001
+
+minio:
+  endpoint: http://106.54.215.151:9000
+  access-key: root
+  secret-key: ${MINIO_SECRET_KEY}
+  bucket-name: muse-ai
+
+
+# springdoc-openapi项目配置
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: cn.edu.sxu.gkhblog.controller
+  default-flat-param-object: true
+# knife4j的增强配置，不需要增强可以不配
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+# DataSource Config
+mongo-plus:
+  data:
+    mongodb:
+      host: 106.54.215.151   #ip
+      port: 27017   #端口
+      database: gkh-all    #数据库名
+      username: admin    #用户名，没有可不填（若账号中出现@,!等等符号，不需要再进行转码！！！）
+      password: ${MONGODB_PASSWORD}    #密码，同上（若密码中出现@,!等等符号，不需要再进行转码！！！）
+      authenticationDatabase: admin     #验证数据库
+      connectTimeoutMS: 50000   #在超时之前等待连接打开的最长时间（以毫秒为单位）

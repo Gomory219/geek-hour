@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.sxu.gkhcourse.mapper.CategoryMapper">
+
+    <select id="getTopCategory" resultType="cn.edu.sxu.gkhcourse.domain.vo.CategoryVO">
+        SELECT tb_category.* FROM tb_category
+        WHERE NOT EXISTS(
+            SELECT 1 FROM tb_category_relation WHERE tb_category_relation.descendant = tb_category.id AND public.tb_category_relation.depth = 1
+        )
+    </select>
+    <select id="getSubCategory" resultType="cn.edu.sxu.gkhcourse.domain.vo.CategoryVO"
+            parameterType="java.lang.Integer">
+        SELECT tb_category.* FROM tb_category, tb_category_relation
+        WHERE tb_category_relation.descendant = tb_category.id
+          AND tb_category_relation.depth = 1
+          AND tb_category_relation.ancestor = #{baseCategoryId};
+    </select>
+</mapper>

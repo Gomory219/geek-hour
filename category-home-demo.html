@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课程分类首页</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, "Microsoft YaHei", sans-serif; background: #f5f5f5; }
+
+        .category-section {
+            max-width: 1200px; margin: 30px auto; background: #fff;
+            border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.06);
+        }
+
+        /* 一级分类 - 横向排列 */
+        .category-primary { display: flex; border-bottom: 1px solid #eee; }
+        .category-primary .item {
+            flex: 1; padding: 16px 10px; text-align: center; cursor: pointer;
+            font-size: 15px; color: #555; transition: all .15s;
+            position: relative; white-space: nowrap; user-select: none;
+        }
+        .category-primary .item:hover { color: #409eff; background: #fafafa; }
+        .category-primary .item.active { color: #409eff; font-weight: 600; }
+        .category-primary .item.active::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 40px; height: 3px; background: #409eff; border-radius: 2px;
+        }
+
+        /* 下方内容区：左侧二级分类 + 右侧课程列表 */
+        .content-area { display: flex; min-height: 320px; }
+
+        /* 左侧：二级分类纵向排列 */
+        .category-secondary {
+            width: 140px; flex-shrink: 0; border-right: 1px solid #eee;
+            padding: 12px 0; display: flex; flex-direction: column;
+        }
+        .category-secondary .sub-item {
+            padding: 12px 16px; cursor: pointer; font-size: 14px; color: #666;
+            transition: all .15s; user-select: none; border-left: 3px solid transparent;
+        }
+        .category-secondary .sub-item:hover { color: #409eff; background: #f5f7fa; }
+        .category-secondary .sub-item.active {
+            color: #409eff; background: #ecf5ff; border-left-color: #409eff; font-weight: 500;
+        }
+
+        /* 右侧：课程列表 */
+        .course-list {
+            flex: 1; padding: 20px; display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px;
+            align-content: start;
+        }
+        .course-card {
+            border: 1px solid #eee; border-radius: 8px; overflow: hidden;
+            cursor: pointer; transition: box-shadow .2s;
+        }
+        .course-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,.1); }
+        .course-card .cover {
+            height: 100px; display: flex; align-items: center; justify-content: center;
+            font-size: 32px; font-weight: bold;
+        }
+        .course-card .info { padding: 12px; }
+        .course-card .info h4 { font-size: 14px; color: #333; margin-bottom: 6px;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .course-card .info p { font-size: 12px; color: #999; margin-bottom: 8px;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .course-card .info .meta { display: flex; justify-content: space-between; align-items: center; }
+        .course-card .info .level {
+            font-size: 11px; padding: 2px 6px; border-radius: 3px; background: #ecf5ff; color: #409eff;
+        }
+        .course-card .info .price { font-size: 16px; color: #f56c6c; font-weight: bold; }
+        .course-card .info .price.free { color: #67c23a; font-size: 13px; }
+        .no-result { color: #999; font-size: 14px; padding: 40px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<div class="category-section">
+    <div class="category-primary" id="primaryList"></div>
+    <div class="content-area">
+        <div class="category-secondary" id="secondaryList"></div>
+        <div class="course-list" id="courseList"></div>
+    </div>
+</div>
+
+<script>
+const categories = [
+    { id: 1, name: '前端开发', children: [
+        { id: 101, name: 'HTML/CSS' }, { id: 102, name: 'JavaScript' },
+        { id: 103, name: 'Vue.js' }, { id: 104, name: 'React' }, { id: 105, name: '前端工程化' }
+    ]},
+    { id: 2, name: '后端开发', children: [
+        { id: 201, name: 'Java' }, { id: 202, name: 'Python' },
+        { id: 203, name: 'Go' }, { id: 204, name: 'Node.js' }, { id: 205, name: 'Spring Boot' }
+    ]},
+    { id: 3, name: '移动开发', children: [
+        { id: 301, name: 'Android' }, { id: 302, name: 'iOS' },
+        { id: 303, name: 'Flutter' }, { id: 304, name: 'React Native' }
+    ]},
+    { id: 4, name: '数据库', children: [
+        { id: 401, name: 'MySQL' }, { id: 402, name: 'Redis' },
+        { id: 403, name: 'MongoDB' }, { id: 404, name: 'PostgreSQL' }
+    ]},
+    { id: 5, name: '云计算与运维', children: [
+        { id: 501, name: 'Linux' }, { id: 502, name: 'Docker' },
+        { id: 503, name: 'Kubernetes' }, { id: 504, name: 'CI/CD' }
+    ]},
+    { id: 6, name: '人工智能', children: [
+        { id: 601, name: '机器学习' }, { id: 602, name: '深度学习' },
+        { id: 603, name: '自然语言处理' }, { id: 604, name: '计算机视觉' }
+    ]},
+    { id: 7, name: '网络安全', children: [
+        { id: 701, name: 'Web安全' }, { id: 702, name: '渗透测试' },
+        { id: 703, name: '密码学' }, { id: 704, name: '安全运维' }
+    ]},
+    { id: 8, name: '数据科学与分析', children: [
+        { id: 801, name: '数据分析' }, { id: 802, name: '数据可视化' },
+        { id: 803, name: '大数据' }, { id: 804, name: '统计学' }
+    ]}
+];
+
+const colors = ['#409eff','#67c23a','#e6a23c','#f56c6c','#909399','#9b59b6','#1abc9c','#e74c3c'];
+
+const courses = [
+    { id: 1, name: 'Vue3 从入门到实战', category: 103, desc: '组合式 API 与项目实战', level: '入门', price: 0, isFree: true },
+    { id: 2, name: 'React18 深度解析', category: 104, desc: 'Hooks、并发模式详解', level: '进阶', price: 99, isFree: false },
+    { id: 3, name: 'JavaScript 高级编程', category: 102, desc: '闭包、原型链精讲', level: '进阶', price: 68, isFree: false },
+    { id: 4, name: 'CSS 动画与特效实战', category: 101, desc: 'CSS3 高级特效技巧', level: '入门', price: 0, isFree: true },
+    { id: 5, name: 'Webpack5 工程化实践', category: 105, desc: '模块打包与微前端', level: '高级', price: 128, isFree: false },
+    { id: 6, name: 'Java 并发编程详解', category: 201, desc: '线程池与锁机制', level: '高级', price: 149, isFree: false },
+    { id: 7, name: 'Spring Boot 3 实战', category: 205, desc: '企业级微服务应用', level: '进阶', price: 199, isFree: false },
+    { id: 8, name: 'Python 数据处理', category: 202, desc: 'Pandas 数据清洗分析', level: '入门', price: 0, isFree: true },
+    { id: 9, name: 'Go 微服务开发', category: 203, desc: '高性能微服务架构', level: '进阶', price: 119, isFree: false },
+    { id: 10, name: 'Node.js 后端开发', category: 204, desc: 'RESTful API 设计', level: '入门', price: 59, isFree: false },
+    { id: 11, name: 'MySQL 性能优化', category: 401, desc: '索引与分库分表', level: '高级', price: 168, isFree: false },
+    { id: 12, name: 'Redis 核心技术', category: 402, desc: '缓存与分布式锁', level: '进阶', price: 99, isFree: false },
+    { id: 13, name: 'Docker 容器化部署', category: 502, desc: '镜像管理与编排', level: '入门', price: 0, isFree: true },
+    { id: 14, name: 'K8s 入门到精通', category: 503, desc: 'Pod 管理与服务发现', level: '进阶', price: 179, isFree: false },
+    { id: 15, name: '深度学习与 PyTorch', category: 602, desc: 'CNN、Transformer 实战', level: '进阶', price: 199, isFree: false },
+    { id: 16, name: 'Flutter 跨平台开发', category: 303, desc: 'Dart 与 UI 组件开发', level: '入门', price: 79, isFree: false },
+    { id: 17, name: 'Web 安全攻防', category: 701, desc: 'XSS、SQL注入防御', level: '进阶', price: 129, isFree: false },
+    { id: 18, name: '大数据 Spark 实战', category: 803, desc: 'RDD 与实时计算', level: '高级', price: 219, isFree: false },
+];
+
+let activePrimary = 1;
+let activeSecondary = null;
+
+function renderPrimary() {
+    document.getElementById('primaryList').innerHTML = categories.map(cat =>
+        `<div class="item ${cat.id === activePrimary ? 'active' : ''}" onclick="selectPrimary(${cat.id})">${cat.name}</div>`
+    ).join('');
+}
+
+function renderSecondary() {
+    const cat = categories.find(c => c.id === activePrimary);
+    document.getElementById('secondaryList').innerHTML = cat.children.map(child =>
+        `<div class="sub-item ${activeSecondary === child.id ? 'active' : ''}" onclick="selectSecondary(${child.id})">${child.name}</div>`
+    ).join('');
+}
+
+function renderCourses() {
+    const el = document.getElementById('courseList');
+    let filtered = courses;
+
+    if (activeSecondary !== null) {
+        filtered = filtered.filter(c => c.category === activeSecondary);
+    } else {
+        const cat = categories.find(c => c.id === activePrimary);
+        const childIds = cat.children.map(c => c.id);
+        filtered = filtered.filter(c => childIds.includes(c.category));
+    }
+
+    if (filtered.length === 0) {
+        el.innerHTML = '<div class="no-result">暂无课程</div>';
+        return;
+    }
+
+    el.innerHTML = filtered.map(c => `
+        <div class="course-card">
+            <div class="cover" style="background:${colors[(c.id - 1) % colors.length]}18; color:${colors[(c.id - 1) % colors.length]}">
+                ${c.name.charAt(0)}
+            </div>
+            <div class="info">
+                <h4>${c.name}</h4>
+                <p>${c.desc}</p>
+                <div class="meta">
+                    <span class="level">${c.level}</span>
+                    ${c.isFree ? '<span class="price free">免费</span>' : `<span class="price">¥${c.price}</span>`}
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function selectPrimary(id) {
+    activePrimary = id;
+    activeSecondary = null;
+    renderPrimary();
+    renderSecondary();
+    renderCourses();
+}
+
+function selectSecondary(id) {
+    activeSecondary = activeSecondary === id ? null : id;
+    renderSecondary();
+    renderCourses();
+}
+
+renderPrimary();
+renderSecondary();
+renderCourses();
+</script>
+</body>
+</html>

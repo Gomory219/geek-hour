@@ -1,18 +1,22 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { UserControllerService } from '@/api/generated/gkh-user'
 
 export interface UserInfo {
-  id: number
-  username: string
-  nickname: string
-  email: string
-  avatar?: string
+  id?: string
+  account?: string
+  userName?: string
+  phone?: string
+  avatarImage?: string
+  role?: 'ADMIN' | 'USER' | 'VIP'
 }
 
 export const useUserStore = defineStore('user', () => {
   const token = ref<string>(localStorage.getItem('token') || '')
   const userInfo = ref<UserInfo | null>(null)
   const isLoggedIn = ref<boolean>(!!token.value)
+
+  const isAdmin = computed(() => userInfo.value?.role === 'ADMIN')
 
   // 设置 Token
   const setToken = (newToken: string) => {
@@ -34,29 +38,69 @@ export const useUserStore = defineStore('user', () => {
     userInfo.value = info
   }
 
+  // 获取当前登录用户信息
+  const fetchUserInfo = async (): Promise<UserInfo | null> => {
+    const res = await UserControllerService.loginUser()
+    if (res.code !== 200) {
+      throw new Error(res.message || '获取用户信息失败')
+    }
+    const info: UserInfo = {
+      id: res.data?.id,
+      account: res.data?.account,
+      userName: res.data?.userName,
+      phone: res.data?.phone,
+      avatarImage: res.data?.avatarImage,
+      role: res.data?.role
+    }
+    userInfo.value = info
+    return info
+  }
+
   // 登录
-  const login = async (username: string, password: string) => {
-    // TODO: 调用登录 API
-    // const res = await UserControllerService.login({ username, password })
-    // setToken(res.data.token)
-    // setUserInfo(res.data.user)
-    console.log('登录:', username, password)
+  const login = async (account: string, password: string): Promise<UserInfo | null> => {
+    const res = await UserControllerService.login({ account, password })
+    if (res.code !== 200) {
+      throw new Error(res.message || '登录失败')
+    }
+    setToken(res.data || '')
+    return await fetchUserInfo()
+  }
+
+  // 注册
+  const register = async (data: {
+    phone: string
+    username: string
+    password: string
+    confirmPassword: string
+  }) => {
+    const res = await UserControllerService.register({
+      phone: data.phone,
+      username: data.username,
+      password: data.password,
+      confirmPassword: data.confirmPassword
+    })
+    if (res.code !== 200) {
+      throw new Error(res.message || '注册失败')
+    }
+    return res.data
   }
 
   // 登出
   const logout = () => {
     clearToken()
-    // TODO: 跳转到登录页
   }
 
   return {
     token,
     userInfo,
     isLoggedIn,
+    isAdmin,
     setToken,
     clearToken,
     setUserInfo,
+    fetchUserInfo,
     login,
+    register,
     logout
   }
 })

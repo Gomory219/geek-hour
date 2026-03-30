@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.sxu.gkhcourse.mapper.CourseMapper">
+
+    <select id="listByCategory" resultType="cn.edu.sxu.gkhcourse.domain.vo.CourseVO"
+            parameterType="java.lang.Integer">
+        SELECT * FROM tb_course WHERE category_id IN (SELECT descendant FROM tb_category_relation WHERE ancestor = #{categoryId});
+    </select>
+</mapper>

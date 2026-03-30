@@ -25,6 +25,13 @@ spring:
                 - Path=/resource/**
               filters:
                 - StripPrefix=2
+            - id: course-service
+              uri: lb://gkh-course
+              predicates:
+                - Path=/course/**
+              filters:
+                - StripPrefix=2
+
 
 server:
   port: 17000
