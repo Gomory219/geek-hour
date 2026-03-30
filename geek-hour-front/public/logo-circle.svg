@@ -1,0 +1,31 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .primary { fill: #2F80ED; stroke: #2F80ED; }
+    .dark { fill: #0B1F33; }
+  </style>
+
+  <!-- 背景圆形 -->
+  <circle cx="100" cy="100" r="95" class="dark"/>
+
+  <!-- 内部时钟 -->
+  <circle cx="100" cy="100" r="42" fill="#ffffff"/>
+
+  <!-- 刻度 -->
+  <line x1="100" y1="62" x2="100" y2="70" stroke="#2F80ED" stroke-width="2.5"/>
+  <line x1="100" y1="130" x2="100" y2="138" stroke="#2F80ED" stroke-width="2.5"/>
+  <line x1="62" y1="100" x2="70" y2="100" stroke="#2F80ED" stroke-width="2.5"/>
+  <line x1="130" y1="100" x2="138" y2="100" stroke="#2F80ED" stroke-width="2.5"/>
+
+  <!-- 对角刻度 -->
+  <line x1="71" y1="71" x2="77" y2="77" stroke="#2F80ED" stroke-width="2" opacity="0.6"/>
+  <line x1="123" y1="77" x2="129" y2="71" stroke="#2F80ED" stroke-width="2" opacity="0.6"/>
+  <line x1="71" y1="129" x2="77" y2="123" stroke="#2F80ED" stroke-width="2" opacity="0.6"/>
+  <line x1="123" y1="123" x2="129" y2="129" stroke="#2F80ED" stroke-width="2" opacity="0.6"/>
+
+  <!-- 时钟指针 -->
+  <line x1="100" y1="100" x2="100" y2="72" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"/>
+  <line x1="100" y1="100" x2="120" y2="115" stroke="#2F80ED" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- 中心点 -->
+  <circle cx="100" cy="100" r="5" class="primary"/>
+</svg>

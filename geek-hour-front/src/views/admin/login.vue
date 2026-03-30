@@ -1,6 +1,9 @@
 <template>
   <div class="admin-login-page">
     <div class="login-card">
+      <div class="logo-wrapper">
+        <img src="/logo-icon.svg" alt="Geek Hour" class="logo" />
+      </div>
       <h2 class="title">Geek Hour 管理后台</h2>
       <n-form ref="formRef" :model="formModel" :rules="rules">
         <n-form-item path="account">
@@ -99,6 +102,16 @@ const handleLogin = async () => {
     background: rgba(255, 255, 255, 0.95);
     border-radius: 12px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+    .logo-wrapper {
+      text-align: center;
+      margin-bottom: 20px;
+
+      .logo {
+        width: 80px;
+        height: 80px;
+      }
+    }
 
     .title {
       text-align: center;

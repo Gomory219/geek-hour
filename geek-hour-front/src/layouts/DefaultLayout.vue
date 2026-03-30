@@ -2,21 +2,35 @@
   <div class="default-layout">
     <header class="header">
       <div class="header-content">
-        <h1 class="logo">Geek Hour</h1>
+        <router-link to="/" class="logo">
+          <img src="/logo-text.svg" alt="Geek Hour" />
+        </router-link>
         <nav class="nav">
-          <router-link to="/">首页</router-link>
-          <router-link to="/course">课程</router-link>
-          <router-link to="/community">社区</router-link>
-          <router-link to="/search">搜索</router-link>
+          <router-link to="/" class="nav-link">首页</router-link>
+          <router-link to="/course" class="nav-link">课程</router-link>
+          <router-link to="/community" class="nav-link">社区</router-link>
+          <router-link to="/search" class="nav-link">搜索</router-link>
         </nav>
         <div class="user-actions">
           <template v-if="userStore.isLoggedIn">
-            <router-link to="/user/profile">个人中心</router-link>
-            <a @click="handleLogout">退出</a>
+            <n-dropdown :options="userMenuOptions" @select="handleUserMenu">
+              <div class="user-avatar-wrapper">
+                <n-avatar
+                  v-if="userStore.userInfo?.avatarImage"
+                  :src="userStore.userInfo.avatarImage"
+                  :size="32"
+                  round
+                />
+                <n-avatar v-else :size="32" round>
+                  {{ userStore.userInfo?.userName?.charAt(0) || 'U' }}
+                </n-avatar>
+                <span class="user-name">{{ userStore.userInfo?.userName || '用户' }}</span>
+              </div>
+            </n-dropdown>
           </template>
           <template v-else>
-            <router-link to="/login">登录</router-link>
-            <router-link to="/register">注册</router-link>
+            <n-button type="primary" size="small" @click="$router.push('/login')">登录</n-button>
+            <n-button size="small" @click="$router.push('/register')">注册</n-button>
           </template>
         </div>
       </div>
@@ -25,21 +39,46 @@
       <router-view />
     </main>
     <footer class="footer">
-      <p>&copy; 2024 Geek Hour. All rights reserved.</p>
+      <div class="footer-content">
+        <p class="footer-text">&copy; 2024 Geek Hour. All rights reserved.</p>
+      </div>
     </footer>
   </div>
 </template>
 
 <script setup lang="ts">
+import { h } from 'vue'
 import { useRouter } from 'vue-router'
+import { NButton, NDropdown, NAvatar } from 'naive-ui'
 import { useUserStore } from '@/stores/user'
 
 const router = useRouter()
 const userStore = useUserStore()
 
-const handleLogout = () => {
-  userStore.logout()
-  router.push('/')
+const userMenuOptions = [
+  { label: '个人中心', key: 'profile' },
+  { label: '我的学习', key: 'learning' },
+  { label: '账号设置', key: 'settings' },
+  { type: 'divider', key: 'd1' },
+  { label: '退出登录', key: 'logout' }
+]
+
+const handleUserMenu = (key: string) => {
+  switch (key) {
+    case 'profile':
+      router.push('/user/profile')
+      break
+    case 'learning':
+      router.push('/user/learning')
+      break
+    case 'settings':
+      router.push('/user/settings')
+      break
+    case 'logout':
+      userStore.logout()
+      router.push('/')
+      break
+  }
 }
 </script>
 
@@ -52,7 +91,7 @@ const handleLogout = () => {
 
 .header {
   background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -68,39 +107,72 @@ const handleLogout = () => {
   }
 
   .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: $primary-color;
-    margin: 0;
+    display: block;
+    text-decoration: none;
+
+    img {
+      width: 180px;
+      height: auto;
+      display: block;
+    }
   }
 
   .nav {
     display: flex;
-    gap: 30px;
+    gap: 8px;
+    margin-left: -60px;
+  }
 
-    a {
-      color: $text-regular;
-      transition: color 0.3s;
+  .nav-link {
+    padding: 6px 16px;
+    border-radius: 6px;
+    color: $text-regular;
+    font-size: 15px;
+    transition: all 0.2s;
+    text-decoration: none;
 
-      &:hover,
-      &.router-link-active {
-        color: $primary-color;
-      }
+    &:hover {
+      color: $primary-color;
+      background: rgba($primary-color, 0.06);
+    }
+
+    &.router-link-active {
+      color: $primary-color;
+      font-weight: 600;
+    }
+
+    &.router-link-exact-active {
+      background: rgba($primary-color, 0.08);
     }
   }
 
   .user-actions {
     display: flex;
-    gap: 20px;
+    align-items: center;
+    gap: 10px;
+  }
 
-    a {
-      color: $text-regular;
-      cursor: pointer;
+  .user-avatar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 20px;
+    transition: background 0.2s;
 
-      &:hover {
-        color: $primary-color;
-      }
+    &:hover {
+      background: $bg-color;
     }
+  }
+
+  .user-name {
+    font-size: 14px;
+    color: $text-regular;
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
@@ -113,9 +185,19 @@ const handleLogout = () => {
 }
 
 .footer {
-  background-color: #f5f5f5;
-  padding: 20px;
-  text-align: center;
-  color: $text-secondary;
+  background-color: #f8f9fb;
+  border-top: 1px solid $border-lighter;
+  padding: 24px 20px;
+
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .footer-text {
+    color: $text-secondary;
+    font-size: 13px;
+  }
 }
 </style>

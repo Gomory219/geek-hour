@@ -2,7 +2,7 @@
   <div class="auth-layout">
     <div class="auth-container">
       <div class="auth-header">
-        <h1 class="logo">Geek Hour</h1>
+        <img src="/logo-text.svg" alt="Geek Hour" class="logo" />
       </div>
       <router-view />
     </div>
@@ -33,10 +33,8 @@
   margin-bottom: 30px;
 
   .logo {
-    font-size: 32px;
-    font-weight: bold;
-    color: #fff;
-    margin: 0;
+    width: 160px;
+    height: auto;
   }
 }
 </style>

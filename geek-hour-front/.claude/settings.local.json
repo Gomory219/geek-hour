@@ -9,7 +9,12 @@
       "Bash(curl -s http://localhost:17000/api/user/v3/api-docs)",
       "Bash(npm run:*)",
       "Bash(timeout 10 cmd /c \"echo Waiting for dev server...\")",
-      "Bash(find /d/code/geek-hour/geek-hour-front/src/components -type f -name *.vue -o -name *.ts -o -name *.js)"
+      "Bash(find /d/code/geek-hour/geek-hour-front/src/components -type f -name *.vue -o -name *.ts -o -name *.js)",
+      "Bash(npx vite:*)",
+      "Bash(curl -s \"http://localhost:63342/geek-hour/category-home-demo.html\")",
+      "Bash(find c:/Users/Redmi/Desktop/CODE/SXU/Java/geek-hour -maxdepth 2 -name *demo* -o -name *category*)",
+      "Bash(npx skills find:*)",
+      "Bash(npx skills add:*)"
     ]
   }
 }

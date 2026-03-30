@@ -1,6 +1,8 @@
 import axios, { type AxiosInstance, type AxiosError, type InternalAxiosRequestConfig, type AxiosResponse } from 'axios'
 import { OpenAPI as UserOpenAPI, UserControllerService } from './generated/gkh-user'
 import { OpenAPI as ResourceOpenAPI, FileControllerService, HealthControllerService as ResourceHealthControllerService } from './generated/gkh-resource'
+import { OpenAPI as CourseOpenAPI, CourseControllerService, CategoryControllerService } from './generated/gkh-course'
+import { OpenAPI as BlogOpenAPI, ArticleControllerService } from './generated/gkh-blog'
 
 // 创建全局axios实例
 const http: AxiosInstance = axios.create({
@@ -76,15 +78,25 @@ UserOpenAPI.WITH_CREDENTIALS = false
 ResourceOpenAPI.TOKEN = async () => localStorage.getItem('token') || ''
 ResourceOpenAPI.WITH_CREDENTIALS = false
 
+CourseOpenAPI.TOKEN = async () => localStorage.getItem('token') || ''
+CourseOpenAPI.WITH_CREDENTIALS = false
+
+BlogOpenAPI.TOKEN = async () => localStorage.getItem('token') || ''
+BlogOpenAPI.WITH_CREDENTIALS = false
+
 // 导出axios实例供其他场景使用
 export { http }
 
 // 导出各服务API模块
 export { UserControllerService }
 export { FileControllerService }
+export { CourseControllerService, CategoryControllerService }
+export { ArticleControllerService }
 
 // 导出Health服务（两个服务都有health接口）
 export const HealthService = ResourceHealthControllerService
 
 // 导出常用类型
 export type { BaseResponseString, UserRegisterDTO } from './generated/gkh-user'
+export type { CourseVO, CategoryVO } from './generated/gkh-course'
+export type { Article } from './generated/gkh-blog'
