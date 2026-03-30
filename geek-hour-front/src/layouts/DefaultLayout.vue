@@ -6,7 +6,7 @@
           <img src="/logo-text.svg" alt="Geek Hour" />
         </router-link>
         <nav class="nav">
-          <router-link to="/" class="nav-link">首页</router-link>
+          <router-link to="/" class="nav-link" exact>首页</router-link>
           <router-link to="/course" class="nav-link">课程</router-link>
           <router-link to="/community" class="nav-link">社区</router-link>
           <router-link to="/search" class="nav-link">搜索</router-link>
@@ -136,12 +136,9 @@ const handleUserMenu = (key: string) => {
       background: rgba($primary-color, 0.06);
     }
 
-    &.router-link-active {
+    &.router-link-exact-active {
       color: $primary-color;
       font-weight: 600;
-    }
-
-    &.router-link-exact-active {
       background: rgba($primary-color, 0.08);
     }
   }

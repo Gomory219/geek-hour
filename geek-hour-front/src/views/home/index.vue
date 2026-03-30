@@ -86,8 +86,7 @@
                 <div v-else class="course-cover-placeholder" :style="{ background: getCardColor(course.id) }">
                   {{ course.name?.charAt(0) }}
                 </div>
-                <span v-if="course.isFree" class="course-badge free">免费</span>
-                <span v-else-if="course.isVip" class="course-badge vip">VIP</span>
+                <span v-if="course.isVip" class="course-badge vip">VIP免费</span>
                 <span v-if="course.isFeature" class="course-badge feature">精选</span>
               </div>
               <div class="course-info">
