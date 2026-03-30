@@ -1,7 +1,10 @@
 package cn.edu.sxu.gkhcourse.controller;
 
 import cn.edu.sxu.common.BaseResponse;
+import cn.edu.sxu.common.PageRequest;
+import cn.edu.sxu.common.PageResult;
 import cn.edu.sxu.common.ResultUtils;
+import cn.edu.sxu.gkhcourse.domain.dto.CoursePageQueryDTO;
 import cn.edu.sxu.gkhcourse.domain.dto.CourseQueryDTO;
 import cn.edu.sxu.gkhcourse.domain.vo.CourseVO;
 import cn.edu.sxu.gkhcourse.service.ICourseService;
@@ -31,5 +34,10 @@ public class CourseController {
     @GetMapping("/listByCategory")
     public BaseResponse<List<CourseVO>> listByCategory(CourseQueryDTO courseQueryDTO) {
         return ResultUtils.success(courseService.listByCategory(courseQueryDTO));
+    }
+
+    @GetMapping("/query")
+    public BaseResponse<PageResult<CourseVO>> pageQuery(CoursePageQueryDTO coursePageQueryDTO) {
+        return ResultUtils.success(courseService.pageQuery(coursePageQueryDTO));
     }
 }

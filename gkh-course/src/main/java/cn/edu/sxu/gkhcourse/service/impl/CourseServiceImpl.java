@@ -1,5 +1,7 @@
 package cn.edu.sxu.gkhcourse.service.impl;
 
+import cn.edu.sxu.common.PageResult;
+import cn.edu.sxu.gkhcourse.domain.dto.CoursePageQueryDTO;
 import cn.edu.sxu.gkhcourse.domain.dto.CourseQueryDTO;
 import cn.edu.sxu.gkhcourse.domain.entity.Course;
 import cn.edu.sxu.gkhcourse.domain.vo.CourseVO;
@@ -24,5 +26,10 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
     @Override
     public List<CourseVO> listByCategory(CourseQueryDTO courseQueryDTO) {
         return baseMapper.listByCategory(courseQueryDTO.getCategoryId());
+    }
+
+    @Override
+    public PageResult<CourseVO> pageQuery(CoursePageQueryDTO coursePageQueryDTO) {
+        return null;
     }
 }

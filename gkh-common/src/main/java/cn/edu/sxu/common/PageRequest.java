@@ -6,4 +6,5 @@ import lombok.Data;
 public class PageRequest {
     private Integer pageNum;
     private Integer pageSize;
+    private String orderField;
 }
