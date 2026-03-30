@@ -28,7 +28,7 @@ mybatis-plus:
       logic-not-delete-value: 0 # 逻辑未删除值。可选，默认值为 0
 
 server:
-  port: 17001
+  port: 17004
 
 minio:
   endpoint: http://106.54.215.151:9000
