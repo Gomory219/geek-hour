@@ -1,1 +1,2 @@
 cn.edu.sxu.config.MinioAutoConfiguration
+cn.edu.sxu.exception.GlobalExceptionHandler

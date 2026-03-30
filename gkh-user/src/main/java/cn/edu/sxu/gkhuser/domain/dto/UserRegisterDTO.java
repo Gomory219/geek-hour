@@ -6,6 +6,10 @@ import lombok.Data;
 
 @Data
 public class UserRegisterDTO {
+
+    @NotBlank
+    private String phone;
+
     @NotBlank
     private String username;
 
@@ -14,15 +18,6 @@ public class UserRegisterDTO {
 
     @NotBlank
     private String confirmPassword;
-
-    @NotBlank
-    private String nickname;
-
-    @NotBlank
-    private String email;
-
-    @NotBlank
-    private String phone;
 
     private String avatar;
 
