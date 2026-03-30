@@ -31,6 +31,12 @@ spring:
                 - Path=/course/**
               filters:
                 - StripPrefix=2
+            - id: blog-service
+              uri: lb://gkh-blog
+              predicates:
+                - Path=/blog/**
+              filters:
+                - StripPrefix=2
 
 
 server:
