@@ -173,7 +173,7 @@ EXECUTE FUNCTION set_update_time();
 CREATE TABLE tb_tutorial
 (
     id                 VARCHAR(32) PRIMARY KEY,
-    name               VARCHAR(32) NOT NULL,
+    title               VARCHAR(32) NOT NULL,
     type               VARCHAR(32) NOT NULL,
     content            TEXT,
     video_url          VARCHAR(255),

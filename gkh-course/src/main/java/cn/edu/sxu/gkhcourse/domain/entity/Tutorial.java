@@ -1,5 +1,6 @@
 package cn.edu.sxu.gkhcourse.domain.entity;
 
+import cn.edu.sxu.gkhcourse.domain.enums.TutorialType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
 import lombok.Setter;
@@ -37,7 +38,7 @@ public class Tutorial implements Serializable {
     /**
      * 教程类型：video-视频教程，article-文章教程
      */
-    private String type;
+    private TutorialType type;
 
     /**
      * 教程内容（markdown格式）
