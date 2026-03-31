@@ -30,13 +30,6 @@ mybatis-plus:
 server:
   port: 17001
 
-minio:
-  endpoint: http://106.54.215.151:9000
-  access-key: root
-  secret-key: ${MINIO_SECRET_KEY}
-  bucket-name: muse-ai
-
-
 # springdoc-openapi项目配置
 springdoc:
   swagger-ui:

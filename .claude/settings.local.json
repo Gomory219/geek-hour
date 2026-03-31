@@ -2,7 +2,20 @@
   "permissions": {
     "allow": [
       "Bash(tree:*)",
-      "mcp__postgres__query"
+      "mcp__postgres__query",
+      "Bash(npx --version)",
+      "Bash(node:*)",
+      "Bash(npx -y @modelcontextprotocol/server-postgres \"postgresql://postgres:410181200408220258@106.54.215.151:5433/gkh-all\" --help)",
+      "Bash(timeout 10 npx:*)",
+      "Bash(npm install:*)",
+      "Bash(timeout:*)",
+      "WebSearch",
+      "Bash(powershell -Command:*)",
+      "Bash(dir:*)",
+      "Bash(ls:*)",
+      "Bash(sudo ls:*)",
+      "Bash(npx @mongodb-js/mongodb-mcp-server:*)",
+      "Bash(find:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

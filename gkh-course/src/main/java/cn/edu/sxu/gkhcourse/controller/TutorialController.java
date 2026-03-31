@@ -5,6 +5,7 @@ import cn.edu.sxu.common.ResultUtils;
 import cn.edu.sxu.gkhcourse.domain.vo.TutorialBriefVO;
 import cn.edu.sxu.gkhcourse.service.ITutorialService;
 import jakarta.annotation.Resource;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +26,7 @@ public class TutorialController {
     @Resource
     private ITutorialService tutorialService;
 
+    @GetMapping("/brief")
     public BaseResponse<List<TutorialBriefVO>> getTutorialBrief(String courseId) {
         return ResultUtils.success(tutorialService.getTutorialBrief(courseId));
     }

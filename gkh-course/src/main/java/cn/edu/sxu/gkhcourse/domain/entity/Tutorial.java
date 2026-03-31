@@ -33,7 +33,7 @@ public class Tutorial implements Serializable {
     /**
      * 教程名称
      */
-    private String name;
+    private String title;
 
     /**
      * 教程类型：video-视频教程，article-文章教程

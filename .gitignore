@@ -41,3 +41,6 @@ build/
 /.idea/
 
 /.mcp.json
+/resource/
+/gkh-resource/src/test/java/cn/edu/sxu/gkhresource/MinioUploadTest.java
+/geek-hour-front/video-demo.html
