@@ -5,13 +5,13 @@ import cn.edu.sxu.domain.dto.UserDTO;
 import cn.edu.sxu.exception.BusinessException;
 import cn.edu.sxu.exception.ErrorCode;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.extra.servlet.ServletUtil;
 import cn.hutool.json.JSONUtil;
 import cn.hutool.jwt.JWT;
 import cn.hutool.jwt.JWTUtil;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 public class AuthUtils {
     private static final String SECRET = "gkh-secret";
@@ -26,7 +26,14 @@ public class AuthUtils {
                 .sign();
     }
 
-    public static UserDTO parseUserDTO(String token) {
+    public static UserDTO loginUser() {
+        ServletRequestAttributes requestAttributes =(ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        ThrowUtils.throwIf(requestAttributes == null, ErrorCode.NO_AUTH_ERROR, "用户未登录");
+        HttpServletRequest request = requestAttributes.getRequest();
+        return getLoginUserFromRequest(request);
+    }
+
+    public static UserDTO parseUserDTOFromToken(String token) {
         boolean valid = JWTUtil.verify(token, key);
         if (!valid) {
             throw new BusinessException(ErrorCode.NO_AUTH_ERROR, "认证失败");
@@ -36,7 +43,7 @@ public class AuthUtils {
         return JSONUtil.toBean(userJson, UserDTO.class);
     }
 
-    public static UserDTO getLoginUser(HttpServletRequest request) {
+    public static UserDTO getLoginUserFromRequest(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         String token = null;
         for (Cookie cookie : cookies) {
@@ -46,7 +53,7 @@ public class AuthUtils {
         }
         ThrowUtils.throwIf(StrUtil.isBlank(token), ErrorCode.NO_AUTH_ERROR, "用户未登录");
 
-        return parseUserDTO(token);
+        return parseUserDTOFromToken(token);
     }
 
 }

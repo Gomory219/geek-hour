@@ -47,13 +47,13 @@ public class UserController {
 
     @GetMapping("/loginUser")
     public BaseResponse<UserDTO> loginUser(HttpServletRequest request) {
-        UserDTO userDTO = AuthUtils.getLoginUser(request);
+        UserDTO userDTO = AuthUtils.getLoginUserFromRequest(request);
         return ResultUtils.success(userDTO);
     }
 
     @GetMapping("/detail")
     public BaseResponse<User> userDetail(HttpServletRequest request) {
-        UserDTO userDTO = AuthUtils.getLoginUser(request);
+        UserDTO userDTO = AuthUtils.getLoginUserFromRequest(request);
         User user = userService.getById(userDTO.getId());
         return ResultUtils.success(user);
     }

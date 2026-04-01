@@ -13,6 +13,7 @@ public class CourseVO {
     private BigDecimal price;
     private String coverImage;
     private Integer likes;
+    private Boolean isLiked;
     private Integer viewCount;
     private Boolean isFree;
     private Boolean isVip;

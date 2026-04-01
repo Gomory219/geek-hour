@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.sxu.gkhinteraction.mapper.LikeMapper">
+
+
+
+    <select id="likeCount" resultType="cn.edu.sxu.gkhinteraction.domain.LikeCountDTO">
+        SELECT biz_id,COUNT(*) count
+        FROM tb_like
+        WHERE
+            biz_type = #{bizType}
+            AND biz_id IN
+            <foreach collection="businessIds" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+        GROUP BY biz_id;
+    </select>
+    <select id="likeDetail" resultType="cn.edu.sxu.gkh.domain.dto.LikeDetailDTO">
+        SELECT
+            biz_id as businessId,
+            count(*) as likeCount,
+            EXISTS(SELECT * FROM tb_like WHERE biz_type = #{bizType} AND biz_id = #{businessId} AND user_id = #{userId}) as isLiked
+        FROM tb_like
+        WHERE
+            biz_type = #{bizType}
+          AND
+            biz_id IN #{businessIds}
+        GROUP BY biz_id;
+    </select>
+</mapper>

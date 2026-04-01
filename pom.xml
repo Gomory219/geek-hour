@@ -90,6 +90,14 @@
                 <scope>import</scope>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo-bom</artifactId>
+                <version>3.3.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
@@ -104,6 +112,8 @@
         <module>gkh-resource</module>
         <module>gkh-course</module>
         <module>gkh-blog</module>
+        <module>gkh-interaction</module>
+        <module>gkh-api</module>
     </modules>
 
 </project>
