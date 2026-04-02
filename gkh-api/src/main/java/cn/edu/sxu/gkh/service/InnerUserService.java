@@ -8,4 +8,5 @@ public interface InnerUserService {
 
     List<UserBriefDTO> listUserBrief(List<String> userIds);
 
+    UserBriefDTO userBrief(String userId);
 }

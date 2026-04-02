@@ -12,4 +12,6 @@ public interface InnerLikeService {
     Map<String, Integer> likeCount(List<String> businessIds, BusinessType bizType);
 
     List<LikeDetailDTO> likeDetail(List<String> businessIds, BusinessType bizType, UserDTO userDTO);
+
+    boolean isLiked(String userId, String businessId, BusinessType businessType);
 }

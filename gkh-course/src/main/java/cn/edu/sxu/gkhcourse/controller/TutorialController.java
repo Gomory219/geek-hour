@@ -3,6 +3,7 @@ package cn.edu.sxu.gkhcourse.controller;
 import cn.edu.sxu.common.BaseResponse;
 import cn.edu.sxu.common.ResultUtils;
 import cn.edu.sxu.gkhcourse.domain.vo.TutorialBriefVO;
+import cn.edu.sxu.gkhcourse.domain.vo.TutorialDetailVO;
 import cn.edu.sxu.gkhcourse.service.ITutorialService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,5 +30,10 @@ public class TutorialController {
     @GetMapping("/brief")
     public BaseResponse<List<TutorialBriefVO>> getTutorialBrief(String courseId) {
         return ResultUtils.success(tutorialService.getTutorialBrief(courseId));
+    }
+
+    @GetMapping("/detail")
+    public BaseResponse<TutorialDetailVO> getTutorialDetail(String tutorialId) {
+        return ResultUtils.success(tutorialService.getTutorialDetail(tutorialId));
     }
 }

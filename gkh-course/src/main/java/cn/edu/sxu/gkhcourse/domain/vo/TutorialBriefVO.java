@@ -1,5 +1,6 @@
 package cn.edu.sxu.gkhcourse.domain.vo;
 
+import cn.edu.sxu.gkhcourse.domain.enums.ProcessType;
 import cn.edu.sxu.gkhcourse.domain.enums.TutorialType;
 import lombok.Data;
 
@@ -19,4 +20,6 @@ public class TutorialBriefVO {
     private List<TutorialBriefVO> children;
 
     private boolean isTrail;
+
+    private ProcessType processType;
 }

@@ -21,4 +21,10 @@ public class InnerUserServiceImpl implements InnerUserService {
         List<User> users = userService.listByIds(userIds);
         return BeanUtil.copyToList(users, UserBriefDTO.class);
     }
+
+    @Override
+    public UserBriefDTO userBrief(String userId) {
+        User user = userService.getById(userId);
+        return BeanUtil.toBean(user, UserBriefDTO.class);
+    }
 }

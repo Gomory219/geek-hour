@@ -2,6 +2,7 @@ package cn.edu.sxu.gkhcourse.service;
 
 import cn.edu.sxu.gkhcourse.domain.entity.Tutorial;
 import cn.edu.sxu.gkhcourse.domain.vo.TutorialBriefVO;
+import cn.edu.sxu.gkhcourse.domain.vo.TutorialDetailVO;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
@@ -17,4 +18,6 @@ import java.util.List;
 public interface ITutorialService extends IService<Tutorial> {
 
     List<TutorialBriefVO> getTutorialBrief(String courseId);
+
+    TutorialDetailVO getTutorialDetail(String tutorialId);
 }
