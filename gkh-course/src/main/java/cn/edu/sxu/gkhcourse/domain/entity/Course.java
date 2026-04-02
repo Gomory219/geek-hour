@@ -1,5 +1,6 @@
 package cn.edu.sxu.gkhcourse.domain.entity;
 
+import cn.edu.sxu.gkhcourse.domain.enums.CourseLevel;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Getter;
 import lombok.Setter;
@@ -90,7 +91,7 @@ public class Course implements Serializable {
     /**
      * 课程难度：beginner-入门，intermediate-进阶，advanced-高级
      */
-    private String level;
+    private CourseLevel level;
 
     /**
      * 创建时间

@@ -4,6 +4,7 @@ import cn.edu.sxu.common.PageResult;
 import cn.edu.sxu.gkhcourse.domain.dto.CoursePageQueryDTO;
 import cn.edu.sxu.gkhcourse.domain.dto.CourseQueryDTO;
 import cn.edu.sxu.gkhcourse.domain.entity.Course;
+import cn.edu.sxu.gkhcourse.domain.vo.CourseDetailVO;
 import cn.edu.sxu.gkhcourse.domain.vo.CourseVO;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -22,4 +23,6 @@ public interface ICourseService extends IService<Course> {
     List<CourseVO> listByCategory(CourseQueryDTO courseQueryDTO);
 
     PageResult<CourseVO> pageQuery(CoursePageQueryDTO coursePageQueryDTO);
+
+    CourseDetailVO detail(String courseId);
 }
