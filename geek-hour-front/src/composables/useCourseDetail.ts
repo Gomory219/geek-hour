@@ -3,7 +3,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { CourseControllerService, TutorialControllerService } from '@/api'
 import type { CourseDetailVO, TutorialBriefVO, TutorialDetailVO, CourseVO } from '@/api'
 
-export type ActiveTab = 'ALL' | 'TEXT' | 'VIDEO'
+export type ActiveTab = 'TEXT' | 'VIDEO'
 export type ActiveView = 'overview' | 'tutorial'
 
 export function useCourseDetail() {
@@ -16,7 +16,7 @@ export function useCourseDetail() {
   const recommendedCourses = ref<CourseVO[]>([])
   const activeTutorial = ref<TutorialBriefVO | null>(null)
   const tutorialContent = ref<TutorialDetailVO | null>(null)
-  const activeTab = ref<ActiveTab>('ALL')
+  const activeTab = ref<ActiveTab>('TEXT')
   const activeView = ref<ActiveView>('overview')
   const loading = ref(true)
   const contentLoading = ref(false)
