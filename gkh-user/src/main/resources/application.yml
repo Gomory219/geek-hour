@@ -63,5 +63,5 @@ dubbo:
     name: tri
     port: 57001
   application:
-    name: gkh-user-inner
+    name: gkh-inner-user
     logger: slf4j

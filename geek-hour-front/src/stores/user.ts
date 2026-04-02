@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import { UserControllerService } from '@/api/generated/gkh-user'
+import { apiRequest } from '@/utils/request'
 
 export interface UserInfo {
   id?: string
@@ -40,17 +41,17 @@ export const useUserStore = defineStore('user', () => {
 
   // 获取当前登录用户信息
   const fetchUserInfo = async (): Promise<UserInfo | null> => {
-    const res = await UserControllerService.loginUser()
-    if (res.code !== 200) {
-      throw new Error(res.message || '获取用户信息失败')
-    }
+    const data = await apiRequest(
+      UserControllerService.loginUser(),
+      { showToast: false, skipAuthRedirect: true }
+    )
     const info: UserInfo = {
-      id: res.data?.id,
-      account: res.data?.account,
-      userName: res.data?.userName,
-      phone: res.data?.phone,
-      avatarImage: res.data?.avatarImage,
-      role: res.data?.role
+      id: data?.id,
+      account: data?.account,
+      userName: data?.userName,
+      phone: data?.phone,
+      avatarImage: data?.avatarImage,
+      role: data?.role
     }
     userInfo.value = info
     return info
@@ -58,11 +59,11 @@ export const useUserStore = defineStore('user', () => {
 
   // 登录
   const login = async (account: string, password: string): Promise<UserInfo | null> => {
-    const res = await UserControllerService.login({ account, password })
-    if (res.code !== 200) {
-      throw new Error(res.message || '登录失败')
-    }
-    setToken(res.data || '')
+    const tokenStr = await apiRequest(
+      UserControllerService.login({ account, password }),
+      { showToast: false }
+    )
+    setToken(tokenStr || '')
     return await fetchUserInfo()
   }
 
@@ -73,16 +74,15 @@ export const useUserStore = defineStore('user', () => {
     password: string
     confirmPassword: string
   }) => {
-    const res = await UserControllerService.register({
-      phone: data.phone,
-      username: data.username,
-      password: data.password,
-      confirmPassword: data.confirmPassword
-    })
-    if (res.code !== 200) {
-      throw new Error(res.message || '注册失败')
-    }
-    return res.data
+    return await apiRequest(
+      UserControllerService.register({
+        phone: data.phone,
+        username: data.username,
+        password: data.password,
+        confirmPassword: data.confirmPassword
+      }),
+      { showToast: false }
+    )
   }
 
   // 登出

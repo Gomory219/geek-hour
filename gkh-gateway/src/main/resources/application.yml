@@ -37,6 +37,14 @@ spring:
                 - Path=/blog/**
               filters:
                 - StripPrefix=2
+            - id: blog-interaction
+              uri: lb://gkh-interaction
+              predicates:
+                - Path=/interaction/**
+              filters:
+                - StripPrefix=2
+
+
 
 
 server:

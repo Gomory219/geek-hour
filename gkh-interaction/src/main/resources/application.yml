@@ -67,5 +67,5 @@ dubbo:
     name: tri
     port: 57005
   application:
-    name: gkh-interaction-inner
+    name: gkh-inner-interaction
     logger: slf4j
