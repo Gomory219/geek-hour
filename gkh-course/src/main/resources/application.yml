@@ -49,3 +49,16 @@ knife4j:
   enable: true
   setting:
     language: zh_cn
+
+dubbo:
+  registry:
+    address: nacos://106.54.215.151:8848
+    #    # This will enable application-level service discovery only (the recommended service discovery method for Dubbo3).
+    #    # For users upgrading from Dubbo2.x, please set the value to 'all' for smooth migration.
+    register-mode: instance
+    parameters:
+      namespace: 3118b88b-9862-4fcc-8e53-7f291c16ba50
+
+  protocol:
+    name: tri
+    port: 57003
