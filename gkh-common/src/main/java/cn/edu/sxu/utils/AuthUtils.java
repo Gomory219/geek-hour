@@ -33,6 +33,17 @@ public class AuthUtils {
         return getLoginUserFromRequest(request);
     }
 
+    public static UserDTO tryLoginUser() {
+        ServletRequestAttributes requestAttributes =(ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        if (requestAttributes == null) return null;
+        HttpServletRequest request = requestAttributes.getRequest();
+        try {
+            return getLoginUserFromRequest(request);
+        } catch (BusinessException e) {
+            return null;
+        }
+    }
+
     public static UserDTO parseUserDTOFromToken(String token) {
         boolean valid = JWTUtil.verify(token, key);
         if (!valid) {

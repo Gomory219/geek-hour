@@ -1,7 +1,11 @@
 package cn.edu.sxu.gkhinteraction.mapper;
 
+import cn.edu.sxu.gkhinteraction.domain.dto.CommentQueryDTO;
 import cn.edu.sxu.gkhinteraction.domain.entity.Comment;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface CommentMapper extends BaseMapper<Comment> {
 
+    List<Comment> selectCommentByDefault(CommentQueryDTO commentQueryDTO);
 }

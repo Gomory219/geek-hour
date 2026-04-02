@@ -3,14 +3,17 @@ package cn.edu.sxu.gkhinteraction.service.impl;
 import cn.edu.sxu.common.RollQueryResponse;
 import cn.edu.sxu.common.ThrowUtils;
 import cn.edu.sxu.domain.dto.UserDTO;
+import cn.edu.sxu.domain.enums.BusinessType;
 import cn.edu.sxu.exception.BusinessException;
 import cn.edu.sxu.exception.ErrorCode;
+import cn.edu.sxu.gkh.domain.dto.LikeDetailDTO;
 import cn.edu.sxu.gkh.domain.dto.UserBriefDTO;
 import cn.edu.sxu.gkh.service.InnerUserService;
 import cn.edu.sxu.gkhinteraction.domain.dto.CommentQueryDTO;
 import cn.edu.sxu.gkhinteraction.domain.dto.CommentRequestDTO;
 import cn.edu.sxu.gkhinteraction.domain.entity.Comment;
 import cn.edu.sxu.gkhinteraction.domain.vo.CommentVO;
+import cn.edu.sxu.gkhinteraction.domain.vo.ReplyBriefVO;
 import cn.edu.sxu.gkhinteraction.mapper.CommentMapper;
 import cn.edu.sxu.gkhinteraction.service.ICommentService;
 import cn.edu.sxu.gkhinteraction.service.ILikeService;
@@ -116,9 +119,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         String sortField = commentQueryDTO.getSortField();
         ThrowUtils.throwIf(StrUtil.isBlank(sortField), ErrorCode.PARAMS_ERROR, "参数错误");
         List<Comment> comments = switch (sortField) {
-            case "default" -> {
-                yield null;
-            }
+            case "default" -> baseMapper.selectCommentByDefault(commentQueryDTO);
             case "createTime" -> {
                 LambdaQueryWrapper<Comment> lambdaQueryWrapper = new LambdaQueryWrapper<>();
 
@@ -136,6 +137,11 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
             }
         };
 
+        List<CommentVO> commentVOS = fillCommentVO(comments, false);
+        return RollQueryResponse.fromData(commentVOS);
+    }
+
+    private List<CommentVO> fillCommentVO(List<Comment> comments, boolean isReply) {
         // 附加用户信息
         List<String> userIds = comments.stream().map(Comment::getUserId).toList();
         List<UserBriefDTO> userBriefDTOS = userService.listUserBrief(userIds);
@@ -152,11 +158,47 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
             commentVO.setUserAvatar(userBriefDTO.getAvatarImage());
         }
 
-        // 点赞评论信息
-//        List<>
 
+        // 点赞信息
+        UserDTO userDTO = AuthUtils.loginUser();
+        List<String> commentIds = commentVOs.stream().map(CommentVO::getId).toList();
+        if (userDTO == null) {
+            Map<String, Integer> idLikesMap = likeService.likeCount(commentIds, BusinessType.COMMENT);
 
-        return RollQueryResponse.fromData(commentVOs);
+            for (CommentVO commentVO : commentVOs) {
+                commentVO.setLikeNum(idLikesMap.get(commentVO.getId()));
+            }
+        } else {
+            List<LikeDetailDTO> likeDetailDTOS = likeService.likeDetail(commentIds, BusinessType.COMMENT, userDTO);
+            Map<String, LikeDetailDTO> idLikeDetailMap = likeDetailDTOS.stream().collect(Collectors.toMap(
+                    LikeDetailDTO::getBusinessId,
+                    d -> d
+            ));
+
+            for (CommentVO commentVO : commentVOs) {
+                LikeDetailDTO likeDetailDTO = idLikeDetailMap.get(commentVO.getId());
+                commentVO.setLikeNum(likeDetailDTO.getLikeCount());
+                commentVO.setIsLiked(likeDetailDTO.getIsLiked());
+            }
+        }
+        if (isReply) {
+            return commentVOs;
+        }
+
+        for (CommentVO commentVO : commentVOs) {
+            LambdaQueryWrapper<Comment> qw = new LambdaQueryWrapper<>();
+            qw.eq(Comment::getParentId, commentVO.getId());
+            qw.gt(Comment::getLikes, commentVO.getLikeNum() / 10);
+            qw.last("LIMIT 2");
+            List<Comment> featuredReplies = list(qw);
+
+            List<CommentVO> commentVOS = fillCommentVO(featuredReplies, true);
+            List<ReplyBriefVO> replyBriefVOS = BeanUtil.copyToList(commentVOS, ReplyBriefVO.class);
+
+            commentVO.setShowReplies(replyBriefVOS);
+        }
+
+        return commentVOs;
     }
 }
 

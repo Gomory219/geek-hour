@@ -15,6 +15,8 @@ public class CommentVO {
     private String userId;
     private String userName;
     private String userAvatar;
+
+    private Boolean isLiked;
     private Integer likeNum;
     private Integer replyNum;
 
